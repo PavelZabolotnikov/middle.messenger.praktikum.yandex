@@ -1,0 +1,24 @@
+<section class="user_page">
+    {{#with (userInfo)}}
+    <div class="user_photo">
+        {{> UserPhoto src=photo alt="Моё фото"}}
+        <button class="photo_change">Изменить фото</button>
+    </div>
+    <h2>{{first_name}}</h2>
+    {{/with}}
+    {{#with (userInfo)}}
+    <ul class="user_info">
+        {{> UserInput inputName='Почта' title='Почта'  value=email disabled='true'}}
+        {{> UserInput inputName='Логин' title='Логин' value=login disabled='true'}}
+        {{> UserInput inputName='Имя' title='Имя' value=first_name disabled='true'}}
+        {{> UserInput inputName='Фамилия' title='Фамилия' value=second_name disabled='true'}}
+        {{> UserInput inputName='Имя в чате' title='Имя в чате' value=chat_name disabled='true'}}
+        {{> UserInput inputName='Телефон' title='Телефон' value=phone_number disabled='true'}}
+    </ul>
+{{/with}}
+    <div class="buttons">
+        <ol><a href="userInfoChangePage" page="userInfoChangePage">Изменить данные</a></ol>
+        <ol><a href="userPasswordChangePage" page="userPasswordChangePage">Изменить пароль</a></ol>
+        <ol><a href="/" page="/">Выйти</a></ol>
+    </div>
+</section>
