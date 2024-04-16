@@ -11,8 +11,8 @@
         {{> InitInput className='registration-page__input' title='Пароль (еще раз)' label="Пароль (еще раз)" type="password" }}
         </div>
         <div class="button">
-        {{> Button label="Зарегистрироваться" className="init_button"}}
-        {{> Button label="Войти" type="link" className="no_acc_button"}}
+        {{> Button label="Зарегистрироваться" type="link" page="chatPage" className="init_button"}}
+        {{> Button label="Войти"  type="link" page="login" className="no_acc_button"}}
     </div>
     </form>
 {{/ Init }}
