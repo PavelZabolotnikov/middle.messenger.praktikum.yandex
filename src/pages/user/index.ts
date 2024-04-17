@@ -7,7 +7,7 @@ import Handlebars from 'handlebars';
 Handlebars.registerHelper('userInfo', () => ({
   photo: myPhoto,
   email: 'yandex@yandex.ru',
-  login: 'SailorMan',
+  login: 'FSBman',
   second_name: 'Бортников',
   first_name: 'Александр',
   chat_name: 'BigMan',
