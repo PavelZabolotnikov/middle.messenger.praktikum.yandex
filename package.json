@@ -13,15 +13,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "sass": "^1.71.1",
     "typescript": "^5.4.4",
     "vite": "^4.4.5",
-    "vite-plugin-handlebars": "^2.0.0",
-    "sass": "^1.71.1"
+    "vite-plugin-handlebars": "^2.0.0"
   },
   "dependencies": {
-    "handlebars": "^4.7.8",
     "express": "^4.18.3",
+    "handlebars": "^4.7.8",
     "path": "^0.12.7",
+    "prettier": "^3.2.5",
     "url": "^0.11.3"
   }
 }
