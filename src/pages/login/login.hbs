@@ -1,9 +1,9 @@
 {{#> Init }}
  <form class="login-page">
         {{> PagesTitle title="Вход" }}
-        {{> InitInput className="login-page__input" title='Логин' label="Логин" }}
-        {{> InitInput className="login-page__input" title='Пароль' label="Пароль" type="password"}}
-        {{> Button label="Авторизоваться" page="chatPage" className="init_button"}}
-        {{> Button label="Нет аккаунта?" page="registration" className="no_acc_button"}}
+        {{> InitInput className="login-page__input" title='Логин' name="Логин" }}
+        {{> InitInput className="login-page__input" title='Пароль' name="Пароль" type="password"}}
+        {{> Button name="Авторизоваться" page="chatPage" className="init_button"}}
+        {{> Button name="Нет аккаунта?" page="registration" className="no_acc_button"}}
   </form>
 {{/ Init }}
