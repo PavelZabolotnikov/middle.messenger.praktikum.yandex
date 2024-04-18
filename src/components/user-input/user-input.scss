@@ -1,9 +1,11 @@
+@import '../../assets/constants.scss';
+
 .user-input {
   &__title {
     color: #999;
   }
 
   &__element {
-    border-bottom: 1px solid #3369f3;
+    border-bottom: 1px solid $blue-color;
   }
 }

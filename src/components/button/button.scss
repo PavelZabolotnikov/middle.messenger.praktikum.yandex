@@ -1,3 +1,5 @@
+@import './assets/constants';
+
 .button {
   height: 40px;
   width: 100%;
@@ -9,7 +11,7 @@
 }
 
 .no_acc_button {
-  color: #3369f3;
+  color: $blue-color;
   font-size: 13px;
   background-color: white;
 }
@@ -17,5 +19,5 @@
 .init_button {
   margin: 10px 0 0;
   color: white;
-  background-color: #3369f3;
+  background-color: $blue-color;
 }
