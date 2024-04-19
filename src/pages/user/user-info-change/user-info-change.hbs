@@ -8,11 +8,11 @@
     {{> UserInput inputName='Логин' type="text" value=login name=login }}
     {{> UserInput inputName='Имя' type="text" value=first_name name=first_name }}
     {{> UserInput inputName='Фамилия' type="text" value=second_name name=second_name }}
-    {{> UserInput inputName='Имя в чате' type="text" value=chat_name name=chat_name }}
-    {{> UserInput inputName='Телефон' type="text" value=phone_number name=phone_number }}
-  </form>
+    {{> UserInput inputName='Имя в чате' type="text" value=display_name name=display_name }}
+    {{> UserInput inputName='Телефон' type="text" value=phone name=phone }}
+
+   <a href="userPage" page="userPage" style='text-decoration: none'>Сохранить</a>
+   </form> 
 {{/with}}
- <form class="buttons">
-   <ol><a href="userPage" page="userPage" style='text-decoration: none'>Сохранить</a></ol>
-</form> 
+ 
 </section>
