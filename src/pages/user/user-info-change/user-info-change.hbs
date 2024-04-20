@@ -1,0 +1,18 @@
+<section class="content">
+  {{#with (userInfo)}}
+  <h2>{{first_name}}</h2>
+  {{/with}}
+  {{#with (userInfo)}}
+  <form class="list">
+    {{> UserInput inputName='Почта' type="text" value=email name=email }}
+    {{> UserInput inputName='Логин' type="text" value=login name=login }}
+    {{> UserInput inputName='Имя' type="text" value=first_name name=first_name }}
+    {{> UserInput inputName='Фамилия' type="text" value=second_name name=second_name }}
+    {{> UserInput inputName='Имя в чате' type="text" value=display_name name=display_name }}
+    {{> UserInput inputName='Телефон' type="text" value=phone name=phone }}
+
+   <a href="userPage" page="userPage" style='text-decoration: none'>Сохранить</a>
+   </form> 
+{{/with}}
+ 
+</section>

@@ -1,0 +1,13 @@
+<nav class="nav-page">
+    {{> PagesTitle title="Навигация" }}
+    <ul class="navigation-page-list">
+    <li>{{> PagesLink  page="login" url='login' text="Вход" }}</li>
+    <li>{{> PagesLink  page="registration" url='registration' text="Регистрация" }}</li>
+    <li>{{> PagesLink  page="chatPage" url='chatPage' text="Чат" }}</li>
+    <li>{{> PagesLink  page="userPage" url='userPage' text="Профиль" }}</li>
+    <li>{{> PagesLink  page="userInfoChangePage" url='userInfoChangePage' text="Изменить данные "}}</li>
+    <li>{{> PagesLink  page="userPasswordChangePage" url='userPasswordChangePage' text="Изменить пароль" }}</li>
+    <li>{{> PagesLink  page="404Page" url='404Page' text="Страница 404" }}</li>
+    <li>{{> PagesLink  page="500Page" url='500Page' text="Страница 500 "}}</li>
+    </ul>
+</nav>
