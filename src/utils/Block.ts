@@ -1,11 +1,14 @@
-//@ts-nocheck
-
 import EventBus from "./EventBus";
 import Handlebars from "handlebars";
 import {nanoid} from 'nanoid';
 
 
 type Props = { [key: string]: unknown };
+
+type MetaProps = {
+    tagName: string;
+    props: Props;
+  };
 
 
 export default class Block {
@@ -17,79 +20,80 @@ export default class Block {
         FLOW_RENDER: "flow:render"
       };
 
-      _element = null;
-      _meta = null;
+      _element: HTMLElement | null  = null;
+      _meta: MetaProps;
       _id = nanoid(6);
       eventBus: () => EventBus;
       props: Props;
       children: Record<string, Block>;
+      state: { [key: string]: unknown };
+      
 
-      
-      constructor(propsWithChildren = {}) {
+      constructor(tagName: string, propsAndChildren: Props) {
         const eventBus = new EventBus();
-        // this._meta = {
-        //   tagName,
-        //   props
-        // };
-        const {props, children} = this._getChildrenAndProps(propsWithChildren);
-        this.props = this._makePropsProxy({ ...props });
-        this.children = children;
-      
-        this.eventBus = () => eventBus;
-      
-        this._registerEvents(eventBus);
     
+        const { children, props } = this._getChildren(propsAndChildren);
+        this.children = children;
+        this._meta = {
+          tagName,
+          props,
+        };
+    
+        this.props = this._makePropsProxy({ ...props, id: this._id });
+        this.eventBus = () => eventBus;
+        this._registerEvents(eventBus);
+        this.state = {};
         eventBus.emit(Block.EVENTS.INIT);
       }
     
-      _addEvents() {
-        const {events = {}} = this.props;
+      private _getChildren(propsAndChildren: Props) {
+        const { children, props } = Object.entries(propsAndChildren).reduce(
+          (acc, [key, value]) => {
+            if (value instanceof Block) {
+              acc.children[key as string] = value;
+            } else {
+              acc.props[key] = value;
+            }
+            return acc;
+          },
+          { children: {} as typeof this.children, props: {} as Props },
+        );
     
-        Object.keys(events).forEach(eventName => {
-          this._element.addEventListener(eventName, events[eventName]);
-      })
-     }
+        return { children, props };
+      }
       
-      _registerEvents(eventBus) {
+      private _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
       }
       
-      _createResources() {
+      private _createResources() {
         const { tagName } = this._meta;
         this._element = this._createDocumentElement(tagName);
       }
       
-      _init() {
-        // this._createResources();
+      private _init() {
+        this._createResources();
         this.init();
-      
+        this.dispatchComponentDidMount();
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
       }
     
-      init() {
-    
-      }
+      init() {}
       
-      _componentDidMount() {
+      private  _componentDidMount(): void {
         this.componentDidMount();
-        console.log('CDM')
-    
-        Object.values(this.children).forEach(child => {
-            child.dispatchComponentDidMount();
-        });
       }
       
-      componentDidMount(oldProps) {}
+      componentDidMount(): void {}
       
       dispatchComponentDidMount() {
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
       }
       
-      _componentDidUpdate(oldProps, newProps) {
-        console.log('CDU')
+      private _componentDidUpdate(oldProps: Props, newProps: Props) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if (!response) {
           return;
@@ -97,62 +101,44 @@ export default class Block {
         this._render();
       }
       
-      componentDidUpdate(oldProps, newProps) {
+      componentDidUpdate(oldProps: Props, newProps: Props) {
         return true;
       }
-    
-      _getChildrenAndProps(propsAndChildren) {
-        const children = {};
-        const props = {};
-    
-        Object.entries(propsAndChildren).forEach(([key, value]) => {
-        if (value instanceof Block) {
-                children[key] = value;
-        } else {
-                props[key] = value;
-            }
-        });
-    
-        return { children, props };
-      }
      
-      setProps = nextProps => {
+      setProps = (nextProps: Props) => {
         if (!nextProps) {
           return;
         }
-      
+        const oldProps = { ...this.props };
         Object.assign(this.props, nextProps);
+        this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, this.props);
       };
     
       get element() {
         return this._element;
       }
       
-      _render() {
+      private _render() {
         const propsAndStubs = { ...this.props };
     
         Object.entries(this.children).forEach(([key, child]) => {
             propsAndStubs[key] = `<div data-id="${child._id}"></div>`
         });
     
-        const fragment = this._createDocumentElement('template');
+        const fragment = this._createDocumentElement('template') as HTMLTemplateElement;;
     
         fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
-        const newElement = fragment.content.firstElementChild;
     
-        Object.values(this.children).forEach(child => {
+        Object.values(this.children).forEach((child) => {
             const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
             
-            stub?.replaceWith(child.getContent());
-        });
-    
-        if (this._element) {
-            this._element.replaceWith(newElement);
-          }
-      
-          this._element = newElement;
-    
-        this._addEvents();
+            const el = child.getContent();
+
+            if (stub && el) {
+              stub.replaceWith(el);
+            }
+          });
+          return fragment.content;
       }
       
       render() {}
@@ -161,44 +147,35 @@ export default class Block {
         return this.element;
       }
     
-      _makePropsProxy(props) {
-        // Можно и так передать this
-        // Такой способ больше не применяется с приходом ES6+
-        const self = this;
-      
+      private _makePropsProxy(props: Props) {
         return new Proxy(props, {
-          get(target, prop) {
+          get(target: Props, prop: string) {
             const value = target[prop];
             return typeof value === "function" ? value.bind(target) : value;
           },
-          set(target, prop, value) {
-            const oldTarget = {...target}
-            target[prop] = value;
-      
-            // Запускаем обновление компоненты
-            // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
-            self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
-            return true;
-          },
+          set :(target: Props, prop: string, value) => {
+            if (target[prop as keyof Props] !== value) {
+                target[prop as keyof Props] = value;
+                this.eventBus().emit(Block.EVENTS.FLOW_CDU);
+              }
+              return true;
+            },
           deleteProperty() {
             throw new Error("Нет доступа");
           }
         });
       }
       
-      _createDocumentElement(tagName) {
+      _createDocumentElement(tagName:string) {
         // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
         return document.createElement(tagName);
       }
       
-      show() {
-        this.getContent().style.display = "block";
+      show():void {
+        if (this._element) this._element.style.display = "block";
       }
       
-      hide() {
-        this.getContent().style.display = "none";
+      hide(): void {
+        if (this._element) this._element.style.display = "none";
       }
       }
-
-
-}
