@@ -1,9 +1,12 @@
-<div>
- <form class="login-page">
-        {{> PagesTitle title="Вход" }}
-        {{> InitInput className="login-page__input" title='Логин' name="Логин" }}
-        {{> InitInput className="login-page__input" title='Пароль' name="Пароль" type="password"}}
-        {{> Button name="Авторизоваться" page="chatPage" className="init_button"}}
-        {{> Button name="Нет аккаунта?" page="registration" className="no_acc_button"}}
+<div className="login-page">
+ <form class="login-form">
+    {{{PagesTitle}}}
+  <div className ="login-page-inputs">
+    {{{LoginInput}}}
+    {{{PasswordInput}}}
+  </div>
+  <div className ="login-page-buttons">
+       {{{LoginButton}}}
+       {{{NoAccauntButton}}}
   </form>
 </div>
