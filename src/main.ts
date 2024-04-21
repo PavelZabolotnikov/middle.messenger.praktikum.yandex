@@ -35,10 +35,6 @@ function navigate(page: string) {
   container.innerHTML = Handlebars.compile(source)(context);
 }
 
-function updateURL(page: string) {
-  history.pushState({ page }, '', `${page}`);
-}
-
 document.addEventListener('DOMContentLoaded', () => navigate('/'));
 
 document.addEventListener('click', (e) => {

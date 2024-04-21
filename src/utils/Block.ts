@@ -119,11 +119,62 @@ export default class Block {
       }
       
       private _render() {
-        const propsAndStubs = { ...this.props };
+        const block: unknown = this.render();
+        this._removeEvents();
+        if (this._element) {
+          this._element.innerHTML = '';
+          this._element.appendChild(block as Node);
+          this._addEvents();
+          this._addAttributes();
+        }
+      }
+
+      private _addAttributes() {
+        const { attr } = this.props;
+        if (attr && typeof attr === 'object') {
+          Object.entries(attr).forEach(([key, value]) => {
+            this._element?.setAttribute(key, value as string);
+          });
+        }
+      }
     
+      private _addEvents(): void {
+        const { events } = this.props;
+    
+        if (events) {
+          Object.entries(events).forEach(([eventName, callback]) => {
+            this._element?.addEventListener(eventName, callback);
+          });
+        }
+      }
+    
+      private _removeEvents(): void {
+        const { events } = this.props;
+        if (events) {
+          Object.entries(events).forEach(([eventName, callback]) => {
+            this._element?.removeEventListener(eventName, callback);
+          });
+        }
+      }
+
+      setClassName(className?: string | unknown) {
+        if (typeof className === 'string') {
+          const classNames = (className as string).split(/\s+/);
+          classNames.forEach((token) => {
+            this._element?.classList.add(token);
+          });
+        }
+      }
+        protected compile(template: string, props: Props, className?: string | unknown) {
+          const propsAndStubs: Record<string, unknown> = { ...props };
+          this.setClassName(className);
+
+
+
         Object.entries(this.children).forEach(([key, child]) => {
             propsAndStubs[key] = `<div data-id="${child._id}"></div>`
         });
+
     
         const fragment = this._createDocumentElement('template') as HTMLTemplateElement;;
     
