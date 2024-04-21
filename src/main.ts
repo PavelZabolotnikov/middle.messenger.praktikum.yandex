@@ -5,15 +5,15 @@ import resolvePath from './utils/index';
 import Block from './utils/Block';
 
 const pages: { [key: string]: Block } = {
-  '/': new Pages.NavigatePage({name: 'Navigation'}),
-  login: [Pages.LoginPage],
-  registration: [Pages.RegistrationPage],
-  userPage: [Pages.UserPage],
-  userInfoChangePage: [Pages.UserInfoChangePage],
-  userPasswordChangePage: [Pages.UserPasswordChangePage],
-  chatPage: [Pages.ChatPage],
-  '404Page': [Pages.ClientErrorPage],
-  '500Page': [Pages.ServerErrorPage],
+  '/':new Pages.NavigatePage({name: 'NavigationPage'}),
+  '/login': [Pages.LoginPage],
+  '/registration': [Pages.RegistrationPage],
+  '/userPage': [Pages.UserPage],
+  '/userInfoChangePage': [Pages.UserInfoChangePage],
+  '/userPasswordChangePage': [Pages.UserPasswordChangePage],
+  '/chatPage': [Pages.ChatPage],
+  '/404Page': [Pages.ClientErrorPage],
+  '/500Page': [Pages.ServerErrorPage],
 };
 
 Object.entries(Components).forEach(([name, component]) => {
@@ -35,6 +35,10 @@ function navigate(page: string) {
   container.innerHTML = Handlebars.compile(source)(context);
 }
 
+function updateURL(page: string) {
+  history.pushState({ page }, '', `${page}`);
+}
+
 document.addEventListener('DOMContentLoaded', () => navigate('/'));
 
 document.addEventListener('click', (e) => {
@@ -48,7 +52,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-
+Handlebars.registerHelper('resolve', resolvePath);
 
 window.addEventListener('popstate', (event) => {
   const page = event.state.page;
