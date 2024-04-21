@@ -1,9 +1,19 @@
-export { NavigatePage } from './navigate';
-export { LoginPage } from './login';
-export { RegistrationPage } from './registration';
-export { ChatPage } from './chat';
-export { UserPage } from './user';
-export { UserInfoChangePage } from './user';
-export { UserPasswordChangePage } from './user';
-export { ClientErrorPage } from './errors-pages';
-export { ServerErrorPage } from './errors-pages';
+import { NavigatePage } from './navigate';
+import { LoginPage } from './login';
+import { RegistrationPage } from './registration';
+import { ChatPage } from './chat';
+import { UserPage } from './user';
+import { UserInfoChangePage } from './user';
+import { UserPasswordChangePage } from './user';
+import { ClientErrorPage } from './errors-pages';
+import { ServerErrorPage } from './errors-pages';
+
+export { NavigatePage, 
+LoginPage, 
+RegistrationPage, 
+ChatPage, 
+UserPage, 
+UserInfoChangePage, 
+UserPasswordChangePage, 
+ClientErrorPage, 
+ ServerErrorPage };

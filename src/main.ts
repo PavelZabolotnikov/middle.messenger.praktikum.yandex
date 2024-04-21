@@ -2,9 +2,10 @@ import Handlebars from 'handlebars';
 import * as Components from './components';
 import * as Pages from './pages';
 import resolvePath from './utils/index';
+import Block from './utils/Block';
 
-const pages = {
-  '/': [Pages.NavigatePage],
+const pages: { [key: string]: Block } = {
+  '/': new Pages.NavigatePage({name: 'Navigation'}),
   login: [Pages.LoginPage],
   registration: [Pages.RegistrationPage],
   userPage: [Pages.UserPage],
@@ -22,9 +23,16 @@ Object.entries(Components).forEach(([name, component]) => {
 function navigate(page: string) {
   //@ts-ignore
   const [source, context] = pages[page];
-  const handlebarsFunct = Handlebars.compile(source);
-  document.querySelector('main')!.innerHTML = handlebarsFunct(source);
-  updateURL(page);
+  const container = document.getElementById('app')!;
+  if(source instanceof Object) {
+    const page = new source(context);
+    container.innerHTML = '';
+    container.append(page.getContent());
+    // page.dispatchComponentDidMount();
+    return;
+  }
+
+  container.innerHTML = Handlebars.compile(source)(context);
 }
 
 function updateURL(page: string) {
@@ -44,7 +52,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-Handlebars.registerHelper('resolve', resolvePath);
+
 
 window.addEventListener('popstate', (event) => {
   const page = event.state.page;

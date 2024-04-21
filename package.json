@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
     "sass": "^1.71.1",
     "typescript": "^5.4.5",
     "vite": "^4.4.5",
@@ -21,10 +23,11 @@
   "dependencies": {
     "express": "^4.18.3",
     "handlebars": "^4.7.8",
+    "nanoid": "^5.0.7",
     "path": "^0.12.7",
     "prettier": "^3.2.5",
-    "url": "^0.11.3",
-    "nanoid": "^5.0.7"
+    "stylelint": "^16.3.1",
+    "url": "^0.11.3"
   },
   "engines": {
     "node": ">=16.20.2"
