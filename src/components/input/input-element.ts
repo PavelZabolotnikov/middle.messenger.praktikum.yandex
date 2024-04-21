@@ -1,6 +1,4 @@
 import Block from "../../utils/Block";
-import ErrorLine from "./error-line";
-import Input from "./input";
 
 class InputElement extends Block {
     constructor(props: Record<string, unknown>) {

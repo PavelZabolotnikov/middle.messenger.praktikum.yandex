@@ -1,2 +1,13 @@
 import './title.scss';
-export { default as PagesTitle } from './title.hbs?raw';
+import Block from '../../utils/Block';
+import Title from './title.hbs?raw';
+
+
+export default class PageTitle extends Block {
+    constructor(props: Record<string, unknown>) {
+      super('h1', props);
+    }
+    render() {
+      return this.compile(Title, this.props, this.props.className);
+    }
+  }
