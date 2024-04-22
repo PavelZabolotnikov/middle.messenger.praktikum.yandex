@@ -1,6 +1,6 @@
 import { NavigationPage } from './navigation-page';
 import { LoginPage } from './login';
-// import { RegistrationPage } from './registration';
+import { RegistrationPage } from './registration';
 // import { ChatPage } from './chat';
 // import { UserPage } from './user';
 // import { UserInfoChangePage } from './user';
@@ -11,7 +11,7 @@ import { LoginPage } from './login';
 export { 
     NavigationPage, 
 LoginPage, 
-// RegistrationPage, 
+ RegistrationPage, 
 // ChatPage, 
 // UserPage, 
 // UserInfoChangePage, 

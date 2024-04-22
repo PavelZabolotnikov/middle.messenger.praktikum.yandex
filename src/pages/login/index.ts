@@ -4,7 +4,7 @@ import Block from "../../utils/Block";
 import PageTitle from "../../components/title/index";
 import PageLinkBlock from '../../components/link';
 import  ButtonBlock  from "../../components/button";
-import InputFieldBlock  from "../../components/input";
+import InputBlock  from "../../components/input";
 import  { validation } from '../../utils/validation';
 
 enum Blocks {
@@ -12,9 +12,9 @@ enum Blocks {
     'password' = 'PasswordInput',
   }
 
-  export enum InputError {
+  enum InputError {
     'login' = 'Неверный формат логина',
-    'password' = 'Недопустимый формат',
+    'password' = 'Неверный формат пароля',
   }
 
 export class LoginPage extends Block {
@@ -80,17 +80,17 @@ handleSubmit = (e: Event) => {
         title: 'Вход',
         className: 'page-title',
       }),
-      LoginInput: new InputFieldBlock({
+      LoginInput: new InputBlock({
         className: 'login-page__input',
         title: 'Логин',
         name: 'login',
         type: 'text',
-        placeholder: 'Login',
+        placeholder: 'Логин',
         events: {
           focusout: (event: Event) => this.handleValidate(event),
         },
       }),
-        PasswordInput: new InputFieldBlock({
+        PasswordInput: new InputBlock({
             className: 'login-page__input',
             title: 'Пароль',
             name: 'password',

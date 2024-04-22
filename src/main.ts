@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const pages: { [key: string]: Block } = {
   '/': new Pages.NavigationPage({name: 'NavigationPage'}),
   '/login': new Pages.LoginPage({ name: 'LoginPage' }),
-  // '/registration': [Pages.RegistrationPage],
+  '/registration': new Pages.RegistrationPage({ name: 'RegistrationPage' }),
   // '/userPage': [Pages.UserPage],
   // '/userInfoChangePage': [Pages.UserInfoChangePage],
   // '/userPasswordChangePage': [Pages.UserPasswordChangePage],

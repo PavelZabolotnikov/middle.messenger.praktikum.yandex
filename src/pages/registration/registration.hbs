@@ -1,18 +1,18 @@
-{{#> Init }}
-    <form class="registration-page">
-        <div class="registration-page__form">
-        {{> PagesTitle title="Регистрация" }}
-        {{> InitInput className='registration-page__input' title='Почта'  name="Почта" }}
-        {{> InitInput className='registration-page__input' title='Логин' name="Логин" }}
-        {{> InitInput className='registration-page__input' title='Имя' name="Имя" }}
-        {{> InitInput className='registration-page__input' title='Фамилия'  name="Фамилия" }}
-        {{> InitInput className='registration-page__input' title='Телефон' name="Телефон" }}
-        {{> InitInput className='registration-page__input' title='Пароль' name="Пароль" type="password"  }}
-        {{> InitInput className='registration-page__input' title='Пароль (еще раз)' name="Пароль (еще раз)" type="password" }}
-        </div>
-        <div class="button">
-        {{> Button name="Зарегистрироваться" type="link" page="chatPage" className="init_button"}}
-        {{> Button name="Войти"  type="link" page="login" className="no_acc_button"}}
-    </div>
-    </form>
-{{/ Init }}
+<div className="registration-page"></div>
+ <form class="registration-form">
+    {{{PagesTitle}}}
+  <div className ="registration-page-inputs">
+    {{{ EmailInput }}}
+    {{{ LoginInput }}}
+    {{{ FirstNameInput }}}
+    {{{ SecondNameInput }}}
+    {{{ PhoneNumberInput }}}
+    {{{ PasswordInput }}}
+    {{{ RepeatPasswordInput }}}
+  </div>
+  <div className ="registration-page-buttons">
+       {{{ RegistrationButton}}}
+       {{{ EnterButton}}}
+  </form>
+</div>
+
