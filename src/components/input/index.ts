@@ -1,5 +1,5 @@
-import './input-field.scss';
-import InputField from './input-field.hbs?raw';
+import './init-input.scss';
+import InputField from './init-input.hbs?raw';
 import Block from '../../utils/Block';
 export default class InputFieldBlock extends Block {
   constructor(props: Record<string, unknown>) {

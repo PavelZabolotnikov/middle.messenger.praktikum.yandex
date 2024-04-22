@@ -170,15 +170,15 @@ export default class Block {
           this.setClassName(className);
 
 
+          const fragment = this._createDocumentElement('template') as HTMLTemplateElement;;
 
         Object.entries(this.children).forEach(([key, child]) => {
             propsAndStubs[key] = `<div data-id="${child._id}"></div>`
         });
 
     
-        const fragment = this._createDocumentElement('template') as HTMLTemplateElement;;
     
-        fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
+        fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
     
         Object.values(this.children).forEach((child) => {
             const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
@@ -217,9 +217,11 @@ export default class Block {
         });
       }
       
-      private _createDocumentElement(tagName:string) {
-        // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-        return document.createElement(tagName);
+      private _createDocumentElement(tagName:string): HTMLElement {
+        const element = document.createElement(tagName);
+        element.setAttribute('data-id', this._id);
+    
+        return element;
       }
       
       show():void {
