@@ -1,28 +1,21 @@
 <section class="user_page">
-    {{#with (userInfo)}}
-    <div class="user_photo">
-        {{> UserPhoto src=photo alt="Моё фото"}}
-        <button class="photo_change">Изменить фото</button>
-    </div>
-    <h2>{{first_name}}</h2>
-    {{/with}}
-    {{#with (userInfo)}}
-     <form>
-    <div class="user_info">
-        {{> UserInput inputName='Почта' title='Почта'  value=email disabled='true'}}
-        {{> UserInput inputName='Логин' title='Логин' value=login disabled='true'}}
-        {{> UserInput inputName='Имя' title='Имя' value=first_name disabled='true'}}
-        {{> UserInput inputName='Фамилия' title='Фамилия' value=second_name disabled='true'}}
-        {{> UserInput inputName='Имя в чате' title='Имя в чате' value=display_name disabled='true'}}
-        {{> UserInput inputName='Телефон' title='Телефон' value=phone disabled='true'}}
-    </div>
-    <div class="buttons">
-        <ul class="list">
-         <li><a href="userInfoChangePage" page="userInfoChangePage">Изменить данные</a></li>
-        <li><a href="userPasswordChangePage" page="userPasswordChangePage">Изменить пароль</a></li>
-        <li><a href="/" page="/">Выйти</a></li>
-        </ul>
-    </div>
-   </form>
-{{/with}}
+
+  <div class="avatar avatar__edit">
+    {{{ UserPhoto }}}
+  </div>
+  {{{ UserFirstName }}}
+  <ul class="input">
+    {{{ UserEmailInput }}}
+    {{{ UserLoginInput }}}
+    {{{ UserFirstNameInput }}}
+    {{{ UserSecondNameInput}}}
+    {{{ UserDisplayNameInput}}}
+    {{{ UserPhoneInput}}}
+  </ul>
+    <div class="change-info">
+    {{{ UserInfoChange }}}
+    {{{ UserPasswordChange }}}
+    {{{ Exit }}}
+  </div>
+
 </section>
