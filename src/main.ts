@@ -14,15 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   const pages: { [key: string]: Block } = {
-  '/': new Pages.NavigationPage({name: 'NavigationPage'}),
+  '/': new Pages.NavigationPage({ name: 'NavigationPage'}),
   '/login': new Pages.LoginPage({ name: 'LoginPage' }),
   '/registration': new Pages.RegistrationPage({ name: 'RegistrationPage' }),
   // '/userPage': [Pages.UserPage],
   // '/userInfoChangePage': [Pages.UserInfoChangePage],
   // '/userPasswordChangePage': [Pages.UserPasswordChangePage],
   // '/chatPage': [Pages.ChatPage],
-  // '/404Page': [Pages.ClientErrorPage],
-  // '/500Page': [Pages.ServerErrorPage],
+  '/404Page': new Pages.ClientErrorPage({ name: 'ClientErrorPage' }),
+  '/500Page': new Pages.ServerErrorPage({ name: 'ServerErrorPage' }),
 };
 
 const render = () => {

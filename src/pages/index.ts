@@ -5,8 +5,8 @@ import { RegistrationPage } from './registration';
 // import { UserPage } from './user';
 // import { UserInfoChangePage } from './user';
 // import { UserPasswordChangePage } from './user';
-// import { ClientErrorPage } from './errors-pages';
-// import { ServerErrorPage } from './errors-pages';
+import { ClientErrorPage } from './errors-pages';
+import { ServerErrorPage } from './errors-pages';
 
 export { 
     NavigationPage, 
@@ -16,6 +16,6 @@ LoginPage,
 // UserPage, 
 // UserInfoChangePage, 
 // UserPasswordChangePage, 
-// ClientErrorPage, 
-//  ServerErrorPage
+ClientErrorPage, 
+ ServerErrorPage
  };
