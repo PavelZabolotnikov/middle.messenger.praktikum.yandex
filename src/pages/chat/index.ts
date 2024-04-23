@@ -1,6 +1,10 @@
 import Block from '../../utils/Block';
 import PageLink from '../../components/link';
 import ChatPageBlock from './chat-page.hbs?raw';
+import ConversationList from '../../components/conversation-list';
+import { chatData } from '../../data/chatData';
+import { ChatCorrespondence } from '../../components/chat-correspondence';
+import MessageSearchInputBlock from '../../components/message-search-input';
 
 
 
@@ -18,20 +22,13 @@ export class ChatPage extends Block {
         },
         text: 'Профиль >',
       }),
-      ReturnLink: new PageLink({
-        attr: {
-          href: 'login',
-        },
-        text: 'Назад к логину',
-      }),
-      SearchInput: new SearchInputBlock({
+      MessageSearchInputBlock: new MessageSearchInputBlock({
         placeholder: 'Поиск',
       }),
-
-      ChatList: new ChatList('div', {
+      ConversationList: new ConversationList('div', {
         chats: chatData,
       }),
-      ChatArea: new ChatArea('div', {
+      ChatCorrespondence: new ChatCorrespondence('div', {
         chat: null,
       }),
     };

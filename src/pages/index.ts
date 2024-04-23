@@ -1,7 +1,7 @@
 import { NavigationPage } from './navigation-page';
 import { LoginPage } from './login';
 import { RegistrationPage } from './registration';
-// import { ChatPage } from './chat';
+import { ChatPage } from './chat';
 // import { UserPage } from './user';
 // import { UserInfoChangePage } from './user';
 // import { UserPasswordChangePage } from './user';
@@ -12,7 +12,7 @@ export {
     NavigationPage, 
 LoginPage, 
  RegistrationPage, 
-// ChatPage, 
+ChatPage, 
 // UserPage, 
 // UserInfoChangePage, 
 // UserPasswordChangePage, 

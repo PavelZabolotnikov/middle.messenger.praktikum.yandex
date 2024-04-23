@@ -1,11 +1,7 @@
-<div class="chat_page">
-    <div class="buttons">
-        <ol><a href="userPage" page="userPage">Профиль </a></ol>
-    </div>
-  {{#> ConversationList }}
-    {{#each (conversation-list)}}
-      {{> ConversationItem }}
-    {{/each}}
-  {{/ ConversationList}}
-  <ol><a href="/" page="/" style='text-decoration: none'>Выйти</a></ol>
+<div class='chat-page__sidebar'>
+  {{{ProfileLink}}}
+  {{{MessageSearchInputBlock}}}
+  {{{ConversationList}}}
 </div>
+
+{{{ChatCorrespondence}}}

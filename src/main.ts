@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // '/userPage': [Pages.UserPage],
   // '/userInfoChangePage': [Pages.UserInfoChangePage],
   // '/userPasswordChangePage': [Pages.UserPasswordChangePage],
-  // '/chatPage': [Pages.ChatPage],
+  '/chatPage': new Pages.ChatPage({ name:'ChatPage'}),
   '/404Page': new Pages.ClientErrorPage({ name: 'ClientErrorPage' }),
   '/500Page': new Pages.ServerErrorPage({ name: 'ServerErrorPage' }),
 };
