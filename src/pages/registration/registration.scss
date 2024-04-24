@@ -1,14 +1,30 @@
-.registration-page {
+@import '../../assets/constants.scss';
+
+.registration-page{
+  background: $dialog-bgcolor;
+  box-shadow: $dialog-shadow;
+  border-radius: 12px;
+  padding: 30px;
+  margin: 120px auto 0;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registration-form {
   width: 280px;
   min-height: 550px;
   display: flex;
   flex-direction: column;
 
-  &__form {
-    flex: 1;
-  }
+
 
   &__input {
     margin-top: 16px;
   }
+}
+ 
+.registration-page-inputs {
+  flex: 1;
 }
