@@ -29,7 +29,7 @@ export class UserPage extends Block {
   render() {
     this.children = {
         UserPhoto: new UserPhoto({
-        alt: 'Мой аватар',
+        alt: 'Моё фото',
         src: user.photo,
         id: this.props.id,
         events: {
@@ -90,7 +90,7 @@ export class UserPage extends Block {
       UserInfoChange: new PageLink({
         attr: {
           class: 'link',
-          href: 'editProfile',
+          href: 'userInfoChangePage',
         },
         text: 'Изменить данные',
       }),

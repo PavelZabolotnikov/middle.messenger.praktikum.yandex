@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
   '/login': new Pages.LoginPage({ name: 'LoginPage' }),
   '/registration': new Pages.RegistrationPage({ name: 'RegistrationPage' }),
   '/userPage': new Pages.UserPage({ name: 'UserPage' }),
-  // '/userInfoChangePage': [Pages.UserInfoChangePage],
+  '/userInfoChangePage': new Pages.UserInfoChangePage({ name: 'UserInfoChangePage' }),
   // '/userPasswordChangePage': [Pages.UserPasswordChangePage],
   '/chatPage': new Pages.ChatPage({ name:'ChatPage'}),
   '/404Page': new Pages.ClientErrorPage({ name: 'ClientErrorPage' }),
