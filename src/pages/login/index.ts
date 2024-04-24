@@ -101,7 +101,7 @@ handleSubmit = (e: Event) => {
             },
           }),
           LoginButton: new ButtonBlock({
-            text: 'Авторизоваться',
+            name: 'Авторизоваться',
             className: 'button button_primary',
             events: {
               click: (e: Event) => {
@@ -112,7 +112,7 @@ handleSubmit = (e: Event) => {
           NoAccauntButton: new PageLinkBlock({
             attr: {
               class: 'link',
-              href: 'signin',
+              href: 'registration',
             },
             text: 'Нет аккаунта?',
           }),

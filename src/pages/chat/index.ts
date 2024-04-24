@@ -18,7 +18,7 @@ export class ChatPage extends Block {
       ProfileLink: new PageLink({
         attr: {
           class: 'link__align-right link__sidebar',
-          href: 'profile',
+          href: 'userPage',
         },
         text: 'Профиль >',
       }),

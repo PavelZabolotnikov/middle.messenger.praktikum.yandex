@@ -81,7 +81,7 @@ export class UserPasswordChangePage extends Block {
         },
       }),
       SaveButton: new ButtonBlock({
-        text: 'Сохранить',
+        name: 'Сохранить',
         className: 'button button_primary button_primary_size_small',
       }),
     };

@@ -168,7 +168,7 @@ validateField(inputName: string, value: string) {
         },
       }),
       RegistrationButton: new ButtonBlock({
-        text: 'Зарегистрироваться',
+        name: 'Зарегистрироваться',
         className: 'button button_primary',
         events: {
           click: (e: Event) => {
@@ -179,11 +179,11 @@ validateField(inputName: string, value: string) {
       EnterButton: new PageLinkBlock({
         attr: {
           class: 'link',
-          href: 'login',
+          href: 'chatPage',
         },
         text: 'Войти',
         className: 'button_secondary',
-        url: 'login',
+        url: 'chatPage',
       }),
     };
 
