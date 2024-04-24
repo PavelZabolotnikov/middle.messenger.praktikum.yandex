@@ -97,7 +97,7 @@ export class UserPage extends Block {
       UserPasswordChange: new PageLink({
         attr: {
           class: 'link',
-          href: 'changePassword',
+          href: 'userPasswordChangePage',
         },
         text: 'Изменить пароль',
       }),

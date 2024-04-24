@@ -5,20 +5,23 @@ const name = /^([А-ЯA-Z][а-яa-z-]*)$/;
 const phone = /^\+?\d{10,15}$/;
 const message = /^.*$/;
 
-export const validation = (type: string, value: string, ): boolean => {
+export const validation = (type: string, value: string, secondValue?: string): boolean => {
   switch (type) {
     case 'login':
       return login.test(value);
     case 'password':
       return password.test(value);
-      case 'email':
-        return email.test(value);
-      case 'name':
-        return name.test(value);
-      case 'phone':
-        return phone.test(value);
-        case 'message':
-          return message.test(value);
+    case 'email':
+      return email.test(value);
+    case 'name':
+      return name.test(value);
+    case 'phone':
+      return phone.test(value);
+    case 'message':
+      return message.test(value);
+    case 'newPasswrd':
+      case 'password_repeat':
+      return value === secondValue;
     default:
       return false;
   }

@@ -147,7 +147,7 @@ export class UserInfoChangePage extends Block {
           focusout: (event: Event) => this.handleValidate(event),
         },
       }),
-      ButtonBlock: new ButtonBlock({
+      SaveButton: new ButtonBlock({
         text: 'Сохранить',
         className: 'button button_primary button_primary_size_small',
         events: {

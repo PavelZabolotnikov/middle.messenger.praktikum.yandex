@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
   '/registration': new Pages.RegistrationPage({ name: 'RegistrationPage' }),
   '/userPage': new Pages.UserPage({ name: 'UserPage' }),
   '/userInfoChangePage': new Pages.UserInfoChangePage({ name: 'UserInfoChangePage' }),
-  // '/userPasswordChangePage': [Pages.UserPasswordChangePage],
+  '/userPasswordChangePage': new Pages.UserPasswordChangePage({ name: 'UserPasswordChangePage' }),
   '/chatPage': new Pages.ChatPage({ name:'ChatPage'}),
   '/404Page': new Pages.ClientErrorPage({ name: 'ClientErrorPage' }),
   '/500Page': new Pages.ServerErrorPage({ name: 'ServerErrorPage' }),
