@@ -1,3 +1,4 @@
+import './chat.scss'
 import Block from '../../utils/Block';
 import PageLink from '../../components/link';
 import ChatPageBlock from './chat-page.hbs?raw';

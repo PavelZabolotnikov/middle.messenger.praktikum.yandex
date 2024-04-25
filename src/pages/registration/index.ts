@@ -1,6 +1,6 @@
 import './registration.scss';
 import Block from "../../utils/Block";
-import PageTitle from "../../components/title/index";
+import PagesTitle from "../../components/title/index";
 import InputBlock  from "../../components/input";
 import  ButtonBlock  from "../../components/button";
 import PageLinkBlock from '../../components/link';
@@ -93,12 +93,12 @@ validateField(inputName: string, value: string) {
 
   render() {
     this.children = {
-      PageTitle: new PageTitle({
+      PagesTitle: new PagesTitle({
         title: 'Регистрация',
-        className: 'page-title',
+        class: 'page-title',
       }),
       EmailInput: new InputBlock({
-        className: 'login-page__input',
+        class: 'login-page__input',
         title: 'Почта',
         name: 'email',
         type: 'text',
@@ -108,7 +108,7 @@ validateField(inputName: string, value: string) {
         },
       }),
       LoginInput: new InputBlock({
-        className: 'login-page__input',
+        class: 'login-page__input',
         title: 'Логин',
         name: 'login',
         type: 'text',
@@ -118,7 +118,7 @@ validateField(inputName: string, value: string) {
         },
       }),
       FirstNameInput: new InputBlock({
-        className: 'login-page__input',
+        class: 'login-page__input',
         title: 'Имя',
         name: 'first_name',
         type: 'text',
@@ -128,7 +128,7 @@ validateField(inputName: string, value: string) {
         },
       }),
       SecondNameInput: new InputBlock({
-        className: 'login-page__input',
+        class: 'login-page__input',
         title: 'Фамилия',
         name: 'second_name',
         type: 'text',
@@ -138,7 +138,7 @@ validateField(inputName: string, value: string) {
         },
       }),
       PhoneNumberInput: new InputBlock({
-        className: 'login-page__input',
+        class: 'login-page__input',
         title: 'Телефон',
         name: 'phone',
         type: 'text',
@@ -148,7 +148,7 @@ validateField(inputName: string, value: string) {
         },
       }),
       PasswordInput: new InputBlock({
-        className: 'login-page__input',
+        class: 'login-page__input',
         title: 'Пароль',
         name: 'password',
         type: 'password',
@@ -158,7 +158,7 @@ validateField(inputName: string, value: string) {
         },
       }),
       PasswordRepeatInputField: new InputBlock({
-        className: 'login-page__input',
+        class: 'login-page__input',
         title: 'Пароль (еще раз)',
         name: 'repeat_password',
         type: 'password',
@@ -169,7 +169,7 @@ validateField(inputName: string, value: string) {
       }),
       RegistrationButton: new ButtonBlock({
         name: 'Зарегистрироваться',
-        className: 'button button_primary',
+        class: 'button button_primary',
         events: {
           click: (e: Event) => {
             this.handleSubmit(e);
@@ -182,7 +182,7 @@ validateField(inputName: string, value: string) {
           href: 'chatPage',
         },
         text: 'Войти',
-        className: 'button_secondary',
+        class: 'button_secondary',
         url: 'chatPage',
       }),
     };

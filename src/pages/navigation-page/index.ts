@@ -1,7 +1,7 @@
 import './navigate.scss';
 import Block from '../../utils/Block';
 import NavigatePage  from './navigate.hbs?raw';
-import PageTitle from "../../components/title/index";
+import PagesTitle from "../../components/title/index";
 import PageLink from '../../components/link';
 
 export class NavigationPage extends Block {
@@ -11,9 +11,9 @@ export class NavigationPage extends Block {
 
     render() {
         this.children = {
-          PageTitle: new PageTitle({
+          PagesTitle: new PagesTitle({
             title: 'Навигация по страницам',
-            className: 'page-title',
+            class: 'page-title',
           }),
           LoginPageLink: new PageLink({
             attr: {

@@ -7,6 +7,6 @@ export default class ButtonBlock extends Block {
       super('button', props);
     }
     render() {
-      return this.compile(Button, this.props, this.props.className);
+      return this.compile(Button, this.props, this.props.class);
     }
   }

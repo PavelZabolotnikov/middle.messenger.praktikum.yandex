@@ -1,7 +1,7 @@
 import './login.scss';
 import LoginBlock from './login.hbs?raw'
 import Block from "../../utils/Block";
-import PageTitle from "../../components/title/index";
+import PagesTitle from "../../components/title/index";
 import PageLinkBlock from '../../components/link';
 import  ButtonBlock  from "../../components/button";
 import InputBlock  from "../../components/input";
@@ -76,12 +76,12 @@ handleSubmit = (e: Event) => {
 
   render() {
     this.children = {
-    PageTitle: new PageTitle({
+    PagesTitle: new PagesTitle({
         title: 'Вход',
-        className: 'page-title',
+        class: 'page-title',
       }),
       LoginInput: new InputBlock({
-        className: 'login-page__input',
+        class: 'login-page__input',
         title: 'Логин',
         name: 'login',
         type: 'text',
@@ -91,7 +91,7 @@ handleSubmit = (e: Event) => {
         },
       }),
         PasswordInput: new InputBlock({
-            className: 'login-page__input',
+            class: 'login-page__input',
             title: 'Пароль',
             name: 'password',
             type: 'password',
@@ -102,7 +102,7 @@ handleSubmit = (e: Event) => {
           }),
           LoginButton: new ButtonBlock({
             name: 'Авторизоваться',
-            className: 'button button_primary',
+            class: 'button button_primary',
             events: {
               click: (e: Event) => {
                 this.handleSubmit(e);

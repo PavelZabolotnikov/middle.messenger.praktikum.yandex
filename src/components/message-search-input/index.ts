@@ -6,6 +6,6 @@ export default class MessageSearchInputBlock extends Block {
     super('div', props);
   }
   render() {
-    return this.compile(MessageSearchInput, this.props, this.props.className);
+    return this.compile(MessageSearchInput, this.props, this.props.class);
   }
 }

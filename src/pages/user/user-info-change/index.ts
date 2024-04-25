@@ -82,7 +82,7 @@ export class UserInfoChangePage extends Block {
         username: user.first_name,
       }),
       UserEmailInput: new ProfileInput({
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         name: 'email',
         type: 'text',
         value: user.email,
@@ -93,7 +93,7 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserLoginInput: new ProfileInput({
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         name: 'login',
         type: 'text',
         value: user.login,
@@ -104,7 +104,7 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserFirstNameInput: new ProfileInput({
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         name: 'first_name',
         type: 'text',
         value: user.first_name,
@@ -115,7 +115,7 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserSecondNameInput: new ProfileInput({
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         name: 'second_name',
         type: 'text',
         value: user.second_name,
@@ -126,7 +126,7 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserDisplayNameInput: new ProfileInput({
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         name: 'display_name',
         type: 'text',
         value: user.display_name,
@@ -137,7 +137,7 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserPhoneInput: new ProfileInput({
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         name: 'phone',
         type: 'text',
         value: user.phone,
@@ -149,7 +149,7 @@ export class UserInfoChangePage extends Block {
       }),
       SaveButton: new ButtonBlock({
         name: 'Сохранить',
-        className: 'button button_primary button_primary_size_small',
+        class: 'button button_primary button_primary_size_small',
         events: {
           click: (e: Event) => {
             this.handleSubmit(e);

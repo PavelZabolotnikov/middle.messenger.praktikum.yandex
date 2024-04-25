@@ -6,6 +6,6 @@ export default class UserNameBlock extends Block {
     super('div', props);
   }
   render() {
-    return this.compile(UserFirstName, this.props, this.props.className);
+    return this.compile(UserFirstName, this.props, this.props.class);
   }
 }

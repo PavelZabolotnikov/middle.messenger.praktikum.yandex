@@ -58,14 +58,14 @@ export class UserPasswordChangePage extends Block {
         name: 'oldPassword',
         type: 'password',
         inputName: 'Старый пароль',
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         placeholder: '*********',
       }),
       NewPasswordInput: new ProfileInput({
         name: 'newPassword',
         type: 'password',
         inputName: 'Новый пароль',
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         placeholder: '*********',
         events: {
           focusout: (event: Event) => this.handleValidate(event),
@@ -82,7 +82,7 @@ export class UserPasswordChangePage extends Block {
       }),
       SaveButton: new ButtonBlock({
         name: 'Сохранить',
-        className: 'button button_primary button_primary_size_small',
+        class: 'button button_primary button_primary_size_small',
       }),
     };
 

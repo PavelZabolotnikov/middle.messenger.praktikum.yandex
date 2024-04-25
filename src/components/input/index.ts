@@ -6,6 +6,6 @@ export default class InputBlock extends Block {
     super('div', props);
   }
   render() {
-    return this.compile(InputField, this.props, this.props.className);
+    return this.compile(InputField, this.props, this.props.class);
   }
 }

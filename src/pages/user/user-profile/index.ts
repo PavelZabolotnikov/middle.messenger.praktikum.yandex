@@ -40,7 +40,7 @@ export class UserPage extends Block {
           username: user.first_name,
         }),
         UserEmailInput: new ProfileInput({
-          className: 'input-field__bottom-border',
+          class: 'input-field__bottom-border',
           name: 'email',
           type: 'text',
           value: user.email,
@@ -48,7 +48,7 @@ export class UserPage extends Block {
           inputName: 'Почта',
         }),
         UserLoginInput: new ProfileInput({
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         name: 'login',
         type: 'text',
         value: user.login,
@@ -56,7 +56,7 @@ export class UserPage extends Block {
         inputName: 'Логин',
       }),
       UserFirstNameInput: new ProfileInput({
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         name: 'first_name',
         type: 'text',
         value: user.first_name,
@@ -64,7 +64,7 @@ export class UserPage extends Block {
         inputName: 'Имя',
       }),
       UserSecondNameInput: new ProfileInput({
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         name: 'second_name',
         type: 'text',
         value: user.second_name,
@@ -72,7 +72,7 @@ export class UserPage extends Block {
         inputName: 'Фамилия',
       }),
       UserDisplayNameInput: new ProfileInput({
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         name: 'display_name',
         type: 'text',
         value: user.display_name,
@@ -80,7 +80,7 @@ export class UserPage extends Block {
         inputName: 'Имя в чате',
       }),
       UserPhoneInput: new ProfileInput({
-        className: 'input-field__bottom-border',
+        class: 'input-field__bottom-border',
         name: 'phone',
         type: 'text',
         value: user.phone,
