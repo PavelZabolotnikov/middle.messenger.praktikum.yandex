@@ -1,3 +1,4 @@
+import './user-profile.scss';
 import Block from '../../../utils/Block';
 import UserProfileBlock from './user-profile.hbs?raw';
 import PageLink from '../../../components/link';
