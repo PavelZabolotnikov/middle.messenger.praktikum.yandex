@@ -149,7 +149,7 @@ export class UserInfoChangePage extends Block {
       }),
       SaveButton: new ButtonBlock({
         name: 'Сохранить',
-        class: 'button button_primary button_primary_size_small',
+        class: 'button button-primary button-primary-size-small',
         events: {
           click: (e: Event) => {
             this.handleSubmit(e);

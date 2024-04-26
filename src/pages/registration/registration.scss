@@ -1,6 +1,6 @@
-@import '../../assets/constants.scss';
+@import url('../../assets/constants.scss');
 
-.registration-page{
+.registration-page {
   background: $dialog-bgcolor;
   flex-direction: column;
   display: flex;
@@ -8,10 +8,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .registration-page__inputs {
-  flex:1;
+  flex: 1;
 }
 
 .registration-form {
@@ -30,7 +29,7 @@
     width: 280px;
   }
 }
- 
+
 .registration-page-buttons {
   flex-direction: column;
   display: flex;

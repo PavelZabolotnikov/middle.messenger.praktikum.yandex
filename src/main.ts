@@ -1,7 +1,6 @@
 import * as Pages from './pages';
 import Block from './utils/Block';
 
-
 document.addEventListener('DOMContentLoaded', function () {
   const { pathname } = window.location;
   const renderDOM = (query: string, block: Block) => {

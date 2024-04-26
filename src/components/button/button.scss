@@ -1,4 +1,4 @@
-@import '../../assets/constants.scss';
+@import url('../../assets/constants.scss');
 
 .button {
   height: 40px;
@@ -16,24 +16,24 @@
       left: 50%;
       top: 70px;
       font-size: 9px;
-      color: red;
+      color: rgb(255, 0, 0);
       transform: translateX(-50%);
       content: 'Ошибка';
     }
   }
 }
 
-.button_primary {
+.button-primary {
   background-color: $blue-color;
-  color: white
+  color: rgb(255, 255, 255);
 }
 
-.button_secondary {
+.button-secondary {
   margin: 10px 0 0;
   color: $button-secondary-color;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
 }
 
-.button_primary_size_small {
+.button-primary-size-small {
   width: 50%;
 }

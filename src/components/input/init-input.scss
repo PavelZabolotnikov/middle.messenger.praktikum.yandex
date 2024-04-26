@@ -1,8 +1,8 @@
-@import '../../assets/constants.scss';
+@import url('../../assets/constants.scss');
 
 .input-field {
   &__title {
-    font: $font-nano;
+    font-size: $font-nano;
     color: $text-light-color;
   }
 }
@@ -37,6 +37,6 @@
 .input-error {
   display: block;
   font-size: 8px;
-  color: #ff2f2f;
+  color: rgb(255, 47, 47);
   height: 13px;
 }

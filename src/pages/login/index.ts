@@ -102,7 +102,7 @@ handleSubmit = (e: Event) => {
           }),
           LoginButton: new ButtonBlock({
             name: 'Авторизоваться',
-            class: 'button button_primary',
+            class: 'button button-primary',
             events: {
               click: (e: Event) => {
                 this.handleSubmit(e);

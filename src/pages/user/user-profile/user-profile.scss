@@ -1,6 +1,6 @@
-@import '../../../assets/constants.scss';
+@import url('../../../assets/constants.scss');
 
-.user_page{
+.user_page {
   height: 100vh;
   display: flex;
 
@@ -15,7 +15,7 @@
     width: 64px;
     display: flex;
     align-items: center;
-    background-color: #FBFBFB;
+    background-color: #fbfbfb;
     justify-content: center;
   }
 
@@ -30,7 +30,7 @@
       align-items: center;
       flex-direction: column;
       margin-bottom: 60px;
-       img{
+      img {
         height: 130px;
         width: 130px;
         margin-bottom: 20px;
@@ -46,10 +46,10 @@
       padding: 0;
       margin-bottom: 60px;
 
-      & .user-info__row{
-        position:relative;
+      & .user-info__row {
+        position: relative;
         & label {
-          position: absolute; 
+          position: absolute;
           top: 20%;
         }
         & input {
@@ -62,7 +62,7 @@
       }
     }
 
-    .change-info a{
+    .change-info a {
       flex-direction: column;
       display: flex;
       text-decoration: none;
@@ -71,5 +71,4 @@
       justify-content: center;
     }
   }
-    
 }
