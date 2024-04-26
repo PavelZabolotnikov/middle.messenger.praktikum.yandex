@@ -1,6 +1,6 @@
 @import '../../../assets/constants.scss';
 
-.user_page {
+.user-page {
   height: 100vh;
   display: flex;
 
@@ -25,7 +25,7 @@
     align-items: center;
     width: 100%;
 
-    & .user_photo {
+    & .user-photo {
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -46,7 +46,7 @@
       padding: 0;
       margin-bottom: 60px;
 
-      & .user-info__row {
+      & .user-info-row {
         position: relative;
         & label {
           position: absolute;
