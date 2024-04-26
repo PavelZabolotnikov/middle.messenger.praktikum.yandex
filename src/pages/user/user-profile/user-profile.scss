@@ -30,6 +30,7 @@
       align-items: center;
       flex-direction: column;
       margin-bottom: 60px;
+
       img {
         height: 130px;
         width: 130px;
@@ -48,10 +49,12 @@
 
       & .user-info-row {
         position: relative;
+
         & label {
           position: absolute;
           top: 20%;
         }
+
         & input {
           text-align: end;
           height: 30px;
