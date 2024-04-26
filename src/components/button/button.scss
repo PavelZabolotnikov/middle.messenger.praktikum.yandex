@@ -16,7 +16,7 @@
       left: 50%;
       top: 70px;
       font-size: 9px;
-      color: rgb(255, 0, 0);
+      color: #f00;
       transform: translateX(-50%);
       content: 'Ошибка';
     }
@@ -25,13 +25,13 @@
 
 .button-primary {
   background-color: $blue-color;
-  color: rgb(255, 255, 255);
+  color: $text-bgcolor;
 }
 
 .button-secondary {
   margin: 10px 0 0;
   color: $button-secondary-color;
-  background-color: rgb(255, 255, 255);
+  background-color: $text-bgcolor;
 }
 
 .button-primary-size-small {
