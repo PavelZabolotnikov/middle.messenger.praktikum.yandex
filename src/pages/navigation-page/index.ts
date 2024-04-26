@@ -76,4 +76,3 @@ export class NavigationPage extends Block {
         return this.compile(NavigatePage, this.props);
       }
     }
-    
