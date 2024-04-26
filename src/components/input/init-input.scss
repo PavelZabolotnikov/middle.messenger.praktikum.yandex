@@ -1,8 +1,8 @@
-@import url('../../assets/constants.scss');
+@import '../../assets/constants.scss';
 
 .input-field {
   &__title {
-    font-size: $font-nano;
+    font: $font-nano;
     color: $text-light-color;
   }
 }
