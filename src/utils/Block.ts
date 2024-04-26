@@ -102,7 +102,7 @@ export default class Block {
       }
       
       componentDidUpdate(oldProps: Props, newProps: Props) {
-        return true;
+       if(oldProps && newProps) { return true };
       }
      
       setProps = (nextProps: Props) => {
