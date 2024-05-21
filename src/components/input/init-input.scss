@@ -1,0 +1,42 @@
+@import '../../assets/constants.scss';
+
+.input-field {
+  &__title {
+    font-size: $font-nano;
+    color: $text-light-color;
+  }
+}
+
+.input {
+  height: 26px;
+  border-bottom: 1px solid grey;
+  border-radius: 6px;
+  background-color: #fff;
+  width: 100%;
+
+  &__element {
+    border: none;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font: inherit;
+    visibility: inherit;
+    border-bottom: 1px solid #3369f3;
+
+    &.input-error {
+      display: none;
+    }
+
+    &--align-right {
+      text-align: right;
+    }
+  }
+}
+
+.input-error {
+  display: block;
+  font-size: 8px;
+  color: #ff2f2f;
+  height: 13px;
+}

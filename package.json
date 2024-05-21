@@ -13,14 +13,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
     "sass": "^1.71.1",
-    "typescript": "^5.4.4",
+    "stylelint": "^16.4.0",
+    "stylelint-config-standard": "^36.0.0",
+    "typescript": "^5.4.5",
     "vite": "^4.4.5",
     "vite-plugin-handlebars": "^2.0.0"
   },
   "dependencies": {
     "express": "^4.18.3",
     "handlebars": "^4.7.8",
+    "nanoid": "^5.0.7",
     "path": "^0.12.7",
     "prettier": "^3.2.5",
     "url": "^0.11.3"

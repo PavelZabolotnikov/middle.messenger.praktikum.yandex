@@ -1,54 +1,35 @@
-import Handlebars from 'handlebars';
-import * as Components from './components';
 import * as Pages from './pages';
-import resolvePath from './utils/index';
+import Block from './utils/Block';
 
-const pages = {
-  '/': [Pages.NavigatePage],
-  login: [Pages.LoginPage],
-  registration: [Pages.RegistrationPage],
-  userPage: [Pages.UserPage],
-  userInfoChangePage: [Pages.UserInfoChangePage],
-  userPasswordChangePage: [Pages.UserPasswordChangePage],
-  chatPage: [Pages.ChatPage],
-  '404Page': [Pages.ClientErrorPage],
-  '500Page': [Pages.ServerErrorPage],
+document.addEventListener('DOMContentLoaded', function () {
+  const { pathname } = window.location;
+  const renderDOM = (query: string, block: Block) => {
+    const root = document.querySelector(query);
+    if (root) {
+      root.appendChild(block.getContent() as HTMLElement);
+    }
+    block.dispatchComponentDidMount();
+    return root;
+  };
+
+  const pages: { [key: string]: Block } = {
+  '/': new Pages.NavigationPage({ name: 'NavigationPage'}),
+  '/login': new Pages.LoginPage({ name: 'LoginPage' }),
+  '/registration': new Pages.RegistrationPage({ name: 'RegistrationPage' }),
+  '/userPage': new Pages.UserPage({ name: 'UserPage' }),
+  '/userInfoChangePage': new Pages.UserInfoChangePage({ name: 'UserInfoChangePage' }),
+  '/userPasswordChangePage': new Pages.UserPasswordChangePage({ name: 'UserPasswordChangePage' }),
+  '/chatPage': new Pages.ChatPage({ name:'ChatPage'}),
+  '/404Page': new Pages.ClientErrorPage({ name: 'ClientErrorPage' }),
+  '/500Page': new Pages.ServerErrorPage({ name: 'ServerErrorPage' }),
 };
 
-Object.entries(Components).forEach(([name, component]) => {
-  Handlebars.registerPartial(name, component);
-});
-
-function navigate(page: string) {
-  //@ts-ignore
-  const [source, context] = pages[page];
-  const handlebarsFunct = Handlebars.compile(source);
-  document.querySelector('main')!.innerHTML = handlebarsFunct(source);
-  updateURL(page);
-}
-
-function updateURL(page: string) {
-  history.pushState({ page }, '', `${page}`);
-}
-
-document.addEventListener('DOMContentLoaded', () => navigate('/'));
-
-document.addEventListener('click', (e) => {
-  //@ts-ignore
-  const page = e.target.getAttribute('page');
-  if (page) {
-    navigate(page);
-
-    e.preventDefault();
-    e.stopImmediatePropagation();
+const render = () => {
+  const Page = pages[pathname];
+  if (Page) {
+    renderDOM('.app', Page);
   }
-});
+};
 
-Handlebars.registerHelper('resolve', resolvePath);
-
-window.addEventListener('popstate', (event) => {
-  const page = event.state.page;
-  if (page) {
-    navigate(page);
-  }
+render();
 });

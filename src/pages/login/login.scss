@@ -1,14 +1,34 @@
+@import '../../assets/constants.scss';
+
 .login-page {
-  width: 280px;
-  height: 390px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form {
+  width: 340px;
+  height: 450px;
   display: flex;
   flex-direction: column;
-
-  &__content {
-    flex: 1;
-  }
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 6px 0 #00000024;
+  border-radius: 12px;
+  padding: 30px;
+  box-sizing: border-box;
 
   &__input {
-    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+    position: relative;
   }
+}
+
+.login-page-inputs {
+  flex: 1;
 }

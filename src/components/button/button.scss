@@ -1,4 +1,4 @@
-@import '../../assets/constants';
+@import '../../assets/constants.scss';
 
 .button {
   height: 40px;
@@ -8,16 +8,32 @@
   border: 0;
   cursor: pointer;
   margin: 10px;
+  position: relative;
+
+  &.error {
+    &::after {
+      position: absolute;
+      left: 50%;
+      top: 70px;
+      font-size: 9px;
+      color: #f00;
+      transform: translateX(-50%);
+      content: 'Ошибка';
+    }
+  }
 }
 
-.no_acc_button {
-  color: $blue-color;
-  font-size: 13px;
-  background-color: white;
-}
-
-.init_button {
-  margin: 10px 0 0;
-  color: white;
+.button-primary {
   background-color: $blue-color;
+  color: $text-bgcolor;
+}
+
+.button-secondary {
+  margin: 10px 0 0;
+  color: $button-secondary-color;
+  background-color: $text-bgcolor;
+}
+
+.button-primary-size-small {
+  width: 50%;
 }

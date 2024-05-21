@@ -1,3 +1,26 @@
-<div class="conversation-list{{#if className}} {{ className }}{{/if}}">
-  {{> @partial-block }}
+{{#if chats}}
+{{#each chats}}
+<div class="chat-item-line"></div>
+<div class="chat-item-block{{#if current}} chat-item-block--current{{/if}}">
+  {{#if photo }}
+  <div>
+    <img class="chat-item__avatar" src={{ photo }} alt={{ name }}><img>
+  </div>
+  {{else }}
+  <div class="chat-item__avatar"></div>
+  {{/if}}
+  <div class="chat-item__message"><span class="chat-item__message-text">{{ message }}</span></div>
+
+  {{#if unread}} <div class="chat-item__unread">
+    <span class="chat-item__unread-text">{{unread}}</span>
+  </div>{{/if}}
+  <div class="chat-item__date">
+    {{#if date}}<span class="chat-item__date-text">{{date}}</span>{{/if}}
+  </div>
 </div>
+
+
+{{/each}}
+{{else}}
+<p style="text-align: center;">Нет доступных чатов</p>
+{{/if}}

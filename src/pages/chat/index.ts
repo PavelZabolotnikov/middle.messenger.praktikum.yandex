@@ -1,13 +1,38 @@
-import Handlebars from 'handlebars';
-import ilon from '../../assets/photo/Ilon.png';
-import veider from '../../assets/photo/Veider.png';
-import petrov from '../../assets/photo/Petrov.png';
-export { default as ChatPage } from './chat-page.hbs?raw';
+import './chat.scss'
+import Block from '../../utils/Block';
+import PageLink from '../../components/link';
+import ChatPageBlock from './chat-page.hbs?raw';
+import ConversationList from '../../components/conversation-list';
+import { chatData } from '../../data/chatData';
+import { ChatCorrespondence } from '../../components/chat-correspondence';
+import MessageSearchInputBlock from '../../components/message-search-input';
 
-Handlebars.registerHelper('conversation-list', () => {
-  return [
-    { name: 'Максимка', message: 'Меня до сих пор не раcкрыли', unread: '2', photo: ilon },
-    { name: 'Энакин', message: 'На дальних рубежах всё спокойно', photo: veider },
-    { name: 'Сашка', message: 'А можно мне в Рокки сыграть?', unread: '4', photo: petrov },
-  ];
-});
+
+
+export class ChatPage extends Block {
+  constructor(props: Record<string, unknown>) {
+    super('div', props);
+  }
+
+  render() {
+    this.children = {
+      ProfileLink: new PageLink({
+        attr: {
+          class: 'link__align-right link__sidebar',
+          href: 'userPage',
+        },
+        text: 'Профиль >',
+      }),
+      MessageSearchInputBlock: new MessageSearchInputBlock({
+        placeholder: 'Поиск',
+      }),
+      ConversationList: new ConversationList('div', {
+        chats: chatData,
+      }),
+      ChatCorrespondence: new ChatCorrespondence('div', {
+        chat: null,
+      }),
+    };
+    return this.compile(ChatPageBlock, this.props, 'chat-page');
+  }
+}
