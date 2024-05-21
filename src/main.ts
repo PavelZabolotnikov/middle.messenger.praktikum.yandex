@@ -1,35 +1,25 @@
 import * as Pages from './pages';
-import Block from './utils/Block';
+import router from '../src/utils/router/Router';
 
-document.addEventListener('DOMContentLoaded', function () {
-  const { pathname } = window.location;
-  const renderDOM = (query: string, block: Block) => {
-    const root = document.querySelector(query);
-    if (root) {
-      root.appendChild(block.getContent() as HTMLElement);
-    }
-    block.dispatchComponentDidMount();
-    return root;
-  };
+enum Links {
+  LoginPage = '/',
+  RegistrationPage = '/sign-up',
+  ChatPage = '/messenger',
+  UserPage = '/settings',
+  UserInfoChangePage = '/userInfoChangePage',
+  UserPasswordChangePage = '/userPasswordChangePage',
+  ClientErrorPage = '/404Page',
+  ServerErrorPage = '/500Page',
+}
 
-  const pages: { [key: string]: Block } = {
-  '/': new Pages.NavigationPage({ name: 'NavigationPage'}),
-  '/login': new Pages.LoginPage({ name: 'LoginPage' }),
-  '/registration': new Pages.RegistrationPage({ name: 'RegistrationPage' }),
-  '/userPage': new Pages.UserPage({ name: 'UserPage' }),
-  '/userInfoChangePage': new Pages.UserInfoChangePage({ name: 'UserInfoChangePage' }),
-  '/userPasswordChangePage': new Pages.UserPasswordChangePage({ name: 'UserPasswordChangePage' }),
-  '/chatPage': new Pages.ChatPage({ name:'ChatPage'}),
-  '/404Page': new Pages.ClientErrorPage({ name: 'ClientErrorPage' }),
-  '/500Page': new Pages.ServerErrorPage({ name: 'ServerErrorPage' }),
-};
-
-const render = () => {
-  const Page = pages[pathname];
-  if (Page) {
-    renderDOM('.app', Page);
-  }
-};
-
-render();
-});
+router
+  .use(Links.LoginPage, () => new Pages.LoginPage({ name: 'login' }))
+  .use(Links.RegistrationPage, () => new Pages.RegistrationPage({ name: 'registration' }))
+  .use(Links.ChatPage, () => new Pages.ChatPage({ name: 'Chat' }))
+  .use(Links.UserPage, () => new Pages.UserPage({ name: 'Profile' }))
+  .use(Links.UserInfoChangePage, () => new Pages.UserInfoChangePage({ name: 'Profile edit' }))
+  .use(Links.UserPasswordChangePage, () => new Pages.UserPasswordChangePage({ name: 'Change password' }))
+  .use(Links.ClientErrorPage, () => new Pages.ClientErrorPage({ name: 'Client Error' }))
+  .use(Links.ServerErrorPage, () => new Pages.ServerErrorPage({ name: 'Server Error' }))
+  .use('/*', () => new Pages.ClientErrorPage({ name: 'NotFound' }))
+  .start();
