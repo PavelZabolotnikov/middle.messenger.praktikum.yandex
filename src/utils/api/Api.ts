@@ -1,4 +1,5 @@
-import BASE_API from '../utils/api';
+import BASE_API from '../api';
+
 
 export enum Method {
   Get = 'Get',
