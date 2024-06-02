@@ -1,6 +1,6 @@
 import { Message } from '../controllers/WebSocket';
 import EventBus from '../utils/EventBus';
-import set from '../utils/helpers/set';
+import { set } from '../../src/utils/helpers/set';
 
 export enum StoreEvents {
   Updated = 'updated',
