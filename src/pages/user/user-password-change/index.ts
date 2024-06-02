@@ -4,7 +4,6 @@ import UserPhoto from '../../../components/user-photo';
 import ProfileInput from '../../../components/user-input';
 import ButtonBlock from '../../../components/button';
 import { validation } from '../../../utils/validation';
-import { user } from '../../../data/chatData';
 import { Password } from '../../../utils/types/profile';
 import Router from '../../../utils/router/Router';
 import User from '../../../controllers/User';

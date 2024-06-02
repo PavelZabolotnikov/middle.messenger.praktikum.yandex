@@ -4,7 +4,6 @@ import UserPhoto from '../../../components/user-photo';
 import UserFirstName from '../../../components/user-name';
 import ProfileInput from '../../../components/user-input';
 import ButtonBlock from '../../../components/button';
-import { user } from '../../../data/chatData';
 import { validation } from '../../../utils/validation';
 import Auth from '../../../controllers/Auth';
 import store, { StoreEvents } from '../../../store/store';

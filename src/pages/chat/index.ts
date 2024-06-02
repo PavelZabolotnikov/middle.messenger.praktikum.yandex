@@ -3,7 +3,6 @@ import Block from '../../utils/Block';
 import PageLink from '../../components/link';
 import ChatPageBlock from './chat-page.hbs?raw';
 import ConversationList from '../../components/conversation-list';
-import { chatData } from '../../data/chatData';
 import { ChatCorrespondence } from '../../components/chat-correspondence';
 import MessageSearchInputBlock from '../../components/message-search-input';
 import store, { StoreEvents } from '../../store/store';

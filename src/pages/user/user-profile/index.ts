@@ -4,7 +4,6 @@ import UserProfileBlock from './user-profile.hbs?raw';
 import PageLink from '../../../components/link';
 import UserPhoto from '../../../components/user-photo';
 import UserFirstName from '../../../components/user-name';
-import { user } from '../../../data/chatData';
 import ProfileInput from '../../../components/user-input';
 import { Links } from '../../../main';
 import authController from '../../../controllers/Auth';
