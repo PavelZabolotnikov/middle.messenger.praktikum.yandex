@@ -6,6 +6,9 @@ import PageLinkBlock from '../../components/link';
 import  ButtonBlock  from "../../components/button";
 import InputBlock  from "../../components/input";
 import  { validation } from '../../utils/validation';
+import { SignInData } from '../../utils/types/auth';
+import authController from '../../controllers/Auth';
+import { Links } from '../../main';
 
 enum Blocks {
     'login' = 'LoginInput',
@@ -60,12 +63,23 @@ validateAllFields(): boolean {
   return isValid;
 }
 
-handleSubmit = (e: Event) => {
+handleSubmit = async (e: Event) => {
   e.preventDefault();
   if (e.target) {
     if (this.validateAllFields()) {
       console.log('Авторизация \n', this.state);
-      (e.target as HTMLButtonElement).classList.remove('error');
+      const data: SignInData = {
+        login: (this.state.login as string) ?? '',
+        password: (this.state.password as string) ?? '',
+      };
+      try {
+        await authController.signin(data);
+        console.log('Авторизация успешна');
+        localStorage.setItem('cookie', 'true');
+        (e.target as HTMLButtonElement).classList.remove('error');
+      } catch (error) {
+        (e.target as HTMLButtonElement).classList.add('error');
+      }
     } else {
       console.log('Ошибка авторизации \n', this.state);
       (e.target as HTMLButtonElement).classList.add('error');
@@ -112,7 +126,7 @@ handleSubmit = (e: Event) => {
           NoAccauntButton: new PageLinkBlock({
             attr: {
               class: 'link',
-              href: 'registration',
+              href: Links.RegistrationPage,
             },
             text: 'Нет аккаунта?',
           }),

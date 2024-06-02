@@ -1,7 +1,7 @@
 import * as Pages from './pages';
 import router from '../src/utils/router/Router';
 
-enum Links {
+export enum Links {
   LoginPage = '/',
   RegistrationPage = '/sign-up',
   ChatPage = '/messenger',

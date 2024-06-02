@@ -6,6 +6,8 @@ import UserPhoto from '../../../components/user-photo';
 import UserFirstName from '../../../components/user-name';
 import { user } from '../../../data/chatData';
 import ProfileInput from '../../../components/user-input';
+import { Links } from '../../../main';
+import authController from '../../../controllers/Auth';
 
 
 
@@ -31,20 +33,20 @@ export class UserPage extends Block {
     this.children = {
         UserPhoto: new UserPhoto({
         alt: 'Моё фото',
-        src: user.photo,
+        src: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}` : '',
         id: this.props.id,
         events: {
           mousedown: (e: Event) => this.handleOpenModal(e),
         },
       }),
       UserFirstName: new UserFirstName({
-          username: user.first_name,
+        username: this.props.first_name ?? '',
         }),
         UserEmailInput: new ProfileInput({
           class: 'input-field__bottom-border',
           name: 'email',
           type: 'text',
-          value: user.email,
+          value: this.props.email ?? '',
           disabled: true,
           inputName: 'Почта',
         }),
@@ -52,7 +54,7 @@ export class UserPage extends Block {
         class: 'input-field__bottom-border',
         name: 'login',
         type: 'text',
-        value: user.login,
+        value: this.props.login ?? '',
         disabled: true,
         inputName: 'Логин',
       }),
@@ -60,7 +62,7 @@ export class UserPage extends Block {
         class: 'input-field__bottom-border',
         name: 'first_name',
         type: 'text',
-        value: user.first_name,
+        value: this.props.first_name ?? '',
         disabled: true,
         inputName: 'Имя',
       }),
@@ -68,7 +70,7 @@ export class UserPage extends Block {
         class: 'input-field__bottom-border',
         name: 'second_name',
         type: 'text',
-        value: user.second_name,
+        value: this.props.second_name ?? '',
         disabled: true,
         inputName: 'Фамилия',
       }),
@@ -76,7 +78,7 @@ export class UserPage extends Block {
         class: 'input-field__bottom-border',
         name: 'display_name',
         type: 'text',
-        value: user.display_name,
+        value: this.props.display_name ?? '',
         disabled: true,
         inputName: 'Имя в чате',
       }),
@@ -84,30 +86,34 @@ export class UserPage extends Block {
         class: 'input-field__bottom-border',
         name: 'phone',
         type: 'text',
-        value: user.phone,
+        value: this.props.phone ?? '',
         disabled: true,
         inputName: 'Телефон',
       }),
       UserInfoChange: new PageLink({
         attr: {
           class: 'link',
-          href: 'userInfoChangePage',
+          href: Links.UserInfoChangePage,
         },
         text: 'Изменить данные',
       }),
       UserPasswordChange: new PageLink({
         attr: {
           class: 'link',
-          href: 'userPasswordChangePage',
+          href: Links.UserPasswordChangePage,
         },
         text: 'Изменить пароль',
       }),
       Exit: new PageLink({
         attr: {
           class: 'link__right_type_right link__secondary',
-          href: 'login',
         },
         text: 'Выйти',
+        events: {
+          click: () => {
+            localStorage.clear(), authController.logout();
+          },
+        },
       }),
     };
 

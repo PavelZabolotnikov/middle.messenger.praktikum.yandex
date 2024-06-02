@@ -6,6 +6,9 @@ import  ButtonBlock  from "../../components/button";
 import PageLinkBlock from '../../components/link';
 import RegistrationBlock from './registration.hbs?raw';
 import  { validation } from '../../utils/validation';
+import { SignUpData } from '../../utils/types/auth';
+import authController from '../../controllers/Auth';
+import { Links } from '../../main';
 
 enum Blocks {
     'email' = 'EmailInput',
@@ -78,14 +81,27 @@ validateField(inputName: string, value: string) {
     return isValid;
   }
 
-  handleSubmit = (event: Event) => {
+  handleSubmit = async (event: Event) => {
     event.preventDefault();
     if (event.target) {
       if (this.validateAllFields()) {
-        console.log('Успешно зарегистрирован \n', this.state);
-        (event.target as HTMLButtonElement).classList.remove('error');
+        const data: SignUpData = {
+          login: (this.state.login as string) ?? '',
+          password: (this.state.password as string) ?? '',
+          email: (this.state.email as string) ?? '',
+          first_name: (this.state.first_name as string) ?? '',
+          second_name: (this.state.second_name as string) ?? '',
+          phone: (this.state.phone as string) ?? '',
+        };
+        try {
+          await authController.signup(data);
+          console.log('Регистрация успешна');
+          (event.target as HTMLButtonElement).classList.remove('error');
+        } catch (error) {
+          (event.target as HTMLButtonElement).classList.add('error');
+        }
       } else {
-        console.log('Ошибка \n', this.state);
+        console.log('Ошибка регистрации \n', this.state);
         (event.target as HTMLButtonElement).classList.add('error');
       }
     }
@@ -179,7 +195,7 @@ validateField(inputName: string, value: string) {
       EnterButton: new PageLinkBlock({
         attr: {
           class: 'link',
-          href: 'chatPage',
+          href: Links.LoginPage,
         },
         text: 'Войти',
         class: 'button-secondary',

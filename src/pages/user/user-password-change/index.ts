@@ -5,6 +5,9 @@ import ProfileInput from '../../../components/user-input';
 import ButtonBlock from '../../../components/button';
 import { validation } from '../../../utils/validation';
 import { user } from '../../../data/chatData';
+import { Password } from '../../../utils/types/profile';
+import Router from '../../../utils/router/Router';
+import User from '../../../controllers/User';
 
 enum Blocks {
   'oldPassword' = 'OldPassword',
@@ -48,11 +51,42 @@ export class UserPasswordChangePage extends Block {
       this.state[name] = value;
     }
   };
+
+  validateAllFields(): boolean {
+    let isValid: boolean = true;
+    const inputElements: NodeListOf<HTMLInputElement> = document.querySelectorAll('.input');
+    inputElements.forEach((inputElement: HTMLInputElement) => {
+      const { name, value } = inputElement;
+      if (!this.validateField(name, value)) {
+        isValid = false;
+      }
+    });
+    return isValid;
+  }
+  handleSubmit = (e: Event) => {
+    e.preventDefault();
+    if (e.target) {
+      if (this.validateAllFields()) {
+        const data: Password = {
+          newPassword: (this.state.newPassword as string) ?? '',
+          oldPassword: (this.state.oldPassword as string) ?? '',
+        };
+        User.changePassword(data);
+        Router.go('/settings');
+        console.log('Успешно изменен пароль \n', this.state);
+        (e.target as HTMLButtonElement).classList.remove('error');
+      } else {
+        console.log('Ошибка \n', this.state);
+        (e.target as HTMLButtonElement).classList.add('error');
+      }
+    }
+  };
+
   render() {
     this.children = {
         UserPhoto: new UserPhoto({
         alt: 'Мой аватар',
-        src: user.photo,
+        src: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}` : '',
       }),
       OldPasswordInput: new ProfileInput({
         name: 'oldPassword',

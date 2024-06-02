@@ -6,6 +6,11 @@ import ProfileInput from '../../../components/user-input';
 import ButtonBlock from '../../../components/button';
 import { user } from '../../../data/chatData';
 import { validation } from '../../../utils/validation';
+import Auth from '../../../controllers/Auth';
+import store, { StoreEvents } from '../../../store/store';
+import User from '../../../controllers/User';
+import { ProfileData } from '../../../utils/types/profile';
+import Router from '../../../utils/router/Router';
 
 export enum InputError {
     'email' = 'Введите корректный email',
@@ -26,6 +31,18 @@ enum Blocks {
 export class UserInfoChangePage extends Block {
   constructor(props: { name?: string }) {
     super('div', { ...props });
+    Auth.getUserData();
+    store.on(StoreEvents.Updated, () => {
+      this.setProps(store.getState().user);
+    });
+    this.state = {
+      email: '',
+      login: '',
+      first_name: '',
+      second_name: '',
+      phone: '',
+      display_name: '',
+    };
   }
 
   validateField(inputName: string, value: string) {
@@ -64,6 +81,17 @@ export class UserInfoChangePage extends Block {
     e.preventDefault();
     if (e.target) {
       if (this.validateAllFields()) {
+        const data: ProfileData = {
+          login: (this.state.login as string) ?? '',
+          password: (this.state.password as string) ?? '',
+          email: (this.state.email as string) ?? '',
+          first_name: (this.state.first_name as string) ?? '',
+          second_name: (this.state.second_name as string) ?? '',
+          phone: (this.state.phone as string) ?? '',
+          display_name: (this.state.display_name as string) ?? '',
+        };
+        User.putUserData(data);
+        Router.go('/settings');
         console.log('Успешно изменен профиль \n', this.state);
         (e.target as HTMLButtonElement).classList.remove('error');
       } else {
@@ -76,16 +104,16 @@ export class UserInfoChangePage extends Block {
     this.children = {
         UserPhoto: new UserPhoto({
         alt: 'Моё фото',
-        src: user.photo,
+        src: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}` : '',
       }),
       UserFirstName: new UserFirstName({
-        username: user.first_name,
+        username: this.props.first_name ?? '',
       }),
       UserEmailInput: new ProfileInput({
         class: 'input-field__bottom-border',
         name: 'email',
         type: 'text',
-        value: user.email,
+        value: this.props.email ?? '',
         disabled: false,
         inputName: 'Почта',
         events: {
@@ -96,7 +124,7 @@ export class UserInfoChangePage extends Block {
         class: 'input-field__bottom-border',
         name: 'login',
         type: 'text',
-        value: user.login,
+        value: this.props.login ?? '',
         disabled: false,
         inputName: 'Логин',
         events: {
@@ -107,7 +135,7 @@ export class UserInfoChangePage extends Block {
         class: 'input-field__bottom-border',
         name: 'first_name',
         type: 'text',
-        value: user.first_name,
+        value: this.props.first_name ?? '',
         disabled: false,
         inputName: 'Имя',
         events: {
@@ -118,7 +146,7 @@ export class UserInfoChangePage extends Block {
         class: 'input-field__bottom-border',
         name: 'second_name',
         type: 'text',
-        value: user.second_name,
+        value: this.props.second_name ?? '',
         disabled: false,
         inputName: 'Фамилия',
         events: {
@@ -129,7 +157,7 @@ export class UserInfoChangePage extends Block {
         class: 'input-field__bottom-border',
         name: 'display_name',
         type: 'text',
-        value: user.display_name,
+        value: this.props.display_name ?? '',
         disabled: false,
         inputName: 'Имя в чате',
         events: {
@@ -140,7 +168,7 @@ export class UserInfoChangePage extends Block {
         class: 'input-field__bottom-border',
         name: 'phone',
         type: 'text',
-        value: user.phone,
+        value: this.props.phone ?? '',
         disabled: false,
         inputName: 'Телефон',
         events: {
