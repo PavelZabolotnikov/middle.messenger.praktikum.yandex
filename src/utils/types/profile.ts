@@ -8,8 +8,8 @@ export interface ProfileData {
     display_name: string;
   }
   
-  export interface Password {
+export interface Password {
     oldPassword: string;
     newPassword: string;
-  }
+   }
   
