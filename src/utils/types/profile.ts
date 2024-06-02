@@ -11,5 +11,5 @@ export interface ProfileData {
 export interface Password {
     oldPassword: string;
     newPassword: string;
-   }
-  
+  }
+ 

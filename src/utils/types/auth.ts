@@ -7,7 +7,7 @@ export interface SignUpData {
     phone: string;
   }
   
-  export interface User {
+export interface User {
     id: number;
     first_name: string;
     second_name: string;
@@ -17,7 +17,8 @@ export interface SignUpData {
     phone: string;
     avatar: string;
   }
-  export interface SignInData {
+  
+export interface SignInData {
     login: string;
     password: string;
   }
