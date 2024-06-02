@@ -1,7 +1,7 @@
 type Indexed<T = unknown> = {
     [key in string]: T;
   };
-  const set = function (object: Indexed | unknown, path: string, value: unknown): Indexed | unknown {
+export const set = function (object: Indexed | unknown, path: string, value: unknown): Indexed | unknown {
     if (typeof object !== 'object' || object === null) {
       return object;
     }
@@ -18,6 +18,4 @@ type Indexed<T = unknown> = {
     current[finalKey] = value;
     return object;
   };
-  
-  export default set;
   
