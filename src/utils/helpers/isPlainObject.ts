@@ -10,4 +10,5 @@ export type PlainObject<T = unknown> = {
       Object.prototype.toString.call(value) === '[object Object]'
     );
   }
+
   
