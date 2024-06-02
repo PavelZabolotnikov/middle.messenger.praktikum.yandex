@@ -18,6 +18,4 @@ export const set = function (object: Indexed | unknown, path: string, value: unk
     const finalKey = keys[keys.length - 1];
     current[finalKey] = value;
     return object;
-  };
-  
-  
+};
