@@ -1,5 +1,5 @@
 import store from '../store/store';
-import WebSocketUtil, { WSEvents } from '../utils/WebSockets/WebSockets';
+import WebSocketUtil, { WSEvents } from '../utils/WebSockets/WS';
 
 export interface Message {
   chat_id: number;
