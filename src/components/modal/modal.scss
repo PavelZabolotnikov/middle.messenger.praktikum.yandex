@@ -56,7 +56,7 @@
     display: none;
   }
   
-  .modal__input-file {
+  .input-file {
     opacity: 0;
     width: 0.1px;
     height: 0.1px;
@@ -65,7 +65,7 @@
     z-index: -1;
   }
   
-  .modal__input-file + label {
+  .input-file + label {
     background-color: #fff;
     padding: 10px 15px;
     cursor: pointer;
