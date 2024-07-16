@@ -11,4 +11,3 @@ export default class LinkBlock extends Block {
     return this.compile(Link, this.props);
   }
 }
-
