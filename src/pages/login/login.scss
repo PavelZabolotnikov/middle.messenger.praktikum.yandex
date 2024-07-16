@@ -1,24 +1,15 @@
 @import '../../assets/constants.scss';
 
 .login-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.login-form {
-  width: 340px;
-  height: 450px;
+  width: 280px;
+  height: 390px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0 0 6px 0 #00000024;
-  border-radius: 12px;
-  padding: 30px;
-  box-sizing: border-box;
+
+  &__content {
+    flex: 1;
+  }
 
   &__input {
     display: flex;
@@ -29,6 +20,14 @@
   }
 }
 
-.login-page-inputs {
-  flex: 1;
+.dialog-wrapper {
+  background: $dialog-bgcolor;
+  box-shadow: $dialog-shadow;
+  border-radius: 12px;
+  padding: 30px;
+  margin: 120px auto 0;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

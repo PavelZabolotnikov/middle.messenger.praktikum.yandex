@@ -1,15 +1,16 @@
 import './chat.scss'
-import Block from '../../utils/Block';
-import PageLink from '../../components/link';
 import ChatPageBlock from './chat-page.hbs?raw';
-import ConversationList from '../../components/conversation-list';
-import { ChatCorrespondence } from '../../components/chat-correspondence';
-import MessageSearchInputBlock from '../../components/message-search-input';
+import Block from '../../utils/Block';
+import Link from '../../components/link';
+import SearchInputBlock from '../../components/search-input';
+import ChatList from '../../components/conversation-list';
+import  {ChatArea}  from '../../components/chat-area';
 import store, { StoreEvents } from '../../store/store';
 import Chat from '../../controllers/Chat'
+import DropdownButtonBlock from '../../components/dropdown-button';
+import Modal from '../../components/modal/modal-chat-create';
 import Auth from '../../controllers/Auth'
 import { Links } from '../../main';
-
 
 export class ChatPage extends Block {
   state: {
@@ -46,23 +47,33 @@ export class ChatPage extends Block {
 
   render() {
     this.children = {
-      ProfileLink: new PageLink({
+      ProfileLink: new Link({
         attr: {
           class: 'link__align-right link__sidebar',
           href: Links.UserPage,
         },
         text: 'Профиль >',
       }),
-      MessageSearchInputBlock: new MessageSearchInputBlock({
+      DropdownButton: new DropdownButtonBlock({
+        events: {
+          mousedown: (e: Event) => this.handleOpenModal(e),
+        },
+      }),
+      SearchInput: new SearchInputBlock({
         placeholder: 'Поиск',
       }),
-      ConversationList: new ConversationList('div', {
+      ChatList: new ChatList('div', {
         chats: this.props.chats,
       }),
-      ChatCorrespondence: new ChatCorrespondence('div', {
+      ChatArea: new ChatArea({
         chat: this.props.current,
         messages: this.props.messages,
         userId: this.state.id,
+      }),
+      Modal: new Modal({
+        events: {
+          click: (e: Event) => this.handleOpenModal(e),
+        },
       }),
     };
     return this.compile(ChatPageBlock, this.props, 'chat-page');

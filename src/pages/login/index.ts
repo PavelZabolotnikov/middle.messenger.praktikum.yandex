@@ -1,7 +1,7 @@
 import './login.scss';
 import LoginBlock from './login.hbs?raw'
 import Block from "../../utils/Block";
-import PagesTitle from "../../components/title/index";
+import PagesTitle from "../../components/page-title/index";
 import PageLinkBlock from '../../components/link';
 import  ButtonBlock  from "../../components/button";
 import InputBlock  from "../../components/input";
@@ -28,7 +28,6 @@ export class LoginPage extends Block {
     password: '',
   };
 }
-
 
 validateField(inputName: string, value: string) {
   const isValid = validation(inputName, value);
@@ -86,7 +85,6 @@ handleSubmit = async (e: Event) => {
     }
   }
 };
-
 
   render() {
     this.children = {

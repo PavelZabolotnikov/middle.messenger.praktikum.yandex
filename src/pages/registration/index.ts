@@ -1,6 +1,6 @@
 import './registration.scss';
 import Block from "../../utils/Block";
-import PagesTitle from "../../components/title/index";
+import PagesTitle from "../../components/page-title/index";
 import InputBlock  from "../../components/input";
 import  ButtonBlock  from "../../components/button";
 import PageLinkBlock from '../../components/link';
@@ -40,7 +40,7 @@ enum Blocks {
         second_name: '',
         phone: '',
         password: '',
-        password_repeat: '',
+        password_repeat: null,
       };
     }
 

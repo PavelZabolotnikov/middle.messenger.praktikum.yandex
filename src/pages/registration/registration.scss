@@ -1,37 +1,24 @@
 @import '../../assets/constants.scss';
 
-.registration-page {
-  background: $dialog-bgcolor;
-  flex-direction: column;
-  display: flex;
-  padding: 30px;
-  justify-content: center;
-  align-items: center;
-}
-
-.registration-page-inputs {
-  flex: 1;
-}
-
-.registration-form {
-  box-shadow: $dialog-shadow;
-  height: 615px;
-  width: 340px;
+.login-page {
+  width: 280px;
+  min-height: 560px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border-radius: 12px;
-  padding: 30px;
-  box-sizing: border-box;
 
-  &__input {
-    margin-top: 16px;
-    width: 280px;
+  &__content {
+    flex: 1;
   }
 }
 
-.registration-page-buttons {
-  flex-direction: column;
+.dialog-wrapper {
+  background: $dialog-bgcolor;
+  box-shadow: $dialog-shadow;
+  border-radius: 12px;
+  padding: 30px;
+  margin: 120px auto 0;
+  max-width: 300px;
   display: flex;
+  justify-content: center;
   align-items: center;
 }

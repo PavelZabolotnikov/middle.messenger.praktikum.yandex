@@ -1,7 +1,7 @@
 import Block from '../../../utils/Block';
 import UserPasswordChangeBlock from './user-password-change.hbs?raw';
-import UserPhoto from '../../../components/user-photo';
-import ProfileInput from '../../../components/user-input';
+import ProfileAvatar from '../../../components/profile/profile-avatar';
+import ProfileInput from '../../../components/profile/profile-input';
 import ButtonBlock from '../../../components/button';
 import { validation } from '../../../utils/validation';
 import { Password } from '../../../utils/types/profile';
@@ -83,7 +83,7 @@ export class UserPasswordChangePage extends Block {
 
   render() {
     this.children = {
-        UserPhoto: new UserPhoto({
+      ProfileAvatar: new ProfileAvatar({
         alt: 'Мой аватар',
         src: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}` : '',
       }),

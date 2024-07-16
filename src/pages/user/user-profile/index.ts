@@ -1,20 +1,23 @@
-import './user-profile.scss';
 import Block from '../../../utils/Block';
 import UserProfileBlock from './user-profile.hbs?raw';
 import PageLink from '../../../components/link';
-import UserPhoto from '../../../components/user-photo';
-import UserFirstName from '../../../components/user-name';
-import ProfileInput from '../../../components/user-input';
+import ProfileAvatar from '../../../components/profile/profile-avatar';
+import ProfileUserTitleBlock from '../../../components/profile/profile-title';
+import ProfileInput from '../../../components/profile/profile-input';
 import { Links } from '../../../main';
 import authController from '../../../controllers/Auth';
-
+import store, { StoreEvents } from '../../../store/store';
+import Auth from '../../../controllers/Auth';
 
 
 export class UserPage extends Block {
   constructor(props: { name?: string }) {
     super('div', { ...props });
-
     this.props.isModalOpen = false;
+    Auth.getUserData();
+    store.on(StoreEvents.Updated, () => {
+      this.setProps(store.getState().user);
+    });
   }
   handleOpenModal = (event: Event) => {
     if (event.target instanceof HTMLElement) {
@@ -30,7 +33,7 @@ export class UserPage extends Block {
 
   render() {
     this.children = {
-        UserPhoto: new UserPhoto({
+        UserProfileAvatarPhoto: new ProfileAvatar({
         alt: 'Моё фото',
         src: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}` : '',
         id: this.props.id,
@@ -38,7 +41,7 @@ export class UserPage extends Block {
           mousedown: (e: Event) => this.handleOpenModal(e),
         },
       }),
-      UserFirstName: new UserFirstName({
+      UserTitle: new ProfileUserTitleBlock({
         username: this.props.first_name ?? '',
         }),
         UserEmailInput: new ProfileInput({

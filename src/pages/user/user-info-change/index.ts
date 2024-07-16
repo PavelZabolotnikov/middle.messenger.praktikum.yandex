@@ -1,8 +1,8 @@
 import Block from '../../../utils/Block';
 import ChangeUserInfoBlock from './user-info-change.hbs?raw';
-import UserPhoto from '../../../components/user-photo';
-import UserFirstName from '../../../components/user-name';
-import ProfileInput from '../../../components/user-input';
+import ProfileAvatar from '../../../components/profile/profile-avatar';
+import ProfileUserTitleBlock from '../../../components/profile/profile-title';
+import ProfileInput from '../../../components/profile/profile-input';
 import ButtonBlock from '../../../components/button';
 import { validation } from '../../../utils/validation';
 import Auth from '../../../controllers/Auth';
@@ -101,11 +101,11 @@ export class UserInfoChangePage extends Block {
   };
   render() {
     this.children = {
-        UserPhoto: new UserPhoto({
+      ProfileAvatar: new ProfileAvatar({
         alt: 'Моё фото',
         src: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}` : '',
       }),
-      UserFirstName: new UserFirstName({
+      ProfileUserTitleBlock: new ProfileUserTitleBlock({
         username: this.props.first_name ?? '',
       }),
       UserEmailInput: new ProfileInput({
