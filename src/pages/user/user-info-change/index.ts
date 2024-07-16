@@ -109,7 +109,7 @@ export class UserInfoChangePage extends Block {
         username: this.props.first_name ?? '',
       }),
       UserEmailInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'email',
         type: 'text',
         value: this.props.email ?? '',
@@ -120,7 +120,7 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserLoginInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'login',
         type: 'text',
         value: this.props.login ?? '',
@@ -131,7 +131,7 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserFirstNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'first_name',
         type: 'text',
         value: this.props.first_name ?? '',
@@ -142,7 +142,7 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserSecondNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'second_name',
         type: 'text',
         value: this.props.second_name ?? '',
@@ -153,7 +153,7 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserDisplayNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'display_name',
         type: 'text',
         value: this.props.display_name ?? '',
@@ -164,7 +164,7 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserPhoneInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'phone',
         type: 'text',
         value: this.props.phone ?? '',

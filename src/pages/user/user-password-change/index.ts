@@ -91,14 +91,14 @@ export class UserPasswordChangePage extends Block {
         name: 'oldPassword',
         type: 'password',
         inputName: 'Старый пароль',
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         placeholder: '*********',
       }),
       NewPasswordInput: new ProfileInput({
         name: 'newPassword',
         type: 'password',
         inputName: 'Новый пароль',
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         placeholder: '*********',
         events: {
           focusout: (event: Event) => this.handleValidate(event),

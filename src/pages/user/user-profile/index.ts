@@ -21,7 +21,7 @@ export class UserPage extends Block {
   }
   handleOpenModal = (event: Event) => {
     if (event.target instanceof HTMLElement) {
-      if (event.target.classList.contains('modal__content')) {
+      if (event.target.classList.contains('content')) {
         return;
       }
       const element = document.querySelector(`.modal`);
@@ -45,7 +45,7 @@ export class UserPage extends Block {
         username: this.props.first_name ?? '',
         }),
         UserEmailInput: new ProfileInput({
-          class: 'input-field__bottom-border',
+          class: 'bottom-border',
           name: 'email',
           type: 'text',
           value: this.props.email ?? '',
@@ -53,7 +53,7 @@ export class UserPage extends Block {
           inputName: 'Почта',
         }),
         UserLoginInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'login',
         type: 'text',
         value: this.props.login ?? '',
@@ -61,7 +61,7 @@ export class UserPage extends Block {
         inputName: 'Логин',
       }),
       UserFirstNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'first_name',
         type: 'text',
         value: this.props.first_name ?? '',
@@ -69,7 +69,7 @@ export class UserPage extends Block {
         inputName: 'Имя',
       }),
       UserSecondNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'second_name',
         type: 'text',
         value: this.props.second_name ?? '',
@@ -77,7 +77,7 @@ export class UserPage extends Block {
         inputName: 'Фамилия',
       }),
       UserDisplayNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'display_name',
         type: 'text',
         value: this.props.display_name ?? '',
@@ -85,7 +85,7 @@ export class UserPage extends Block {
         inputName: 'Имя в чате',
       }),
       UserPhoneInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'phone',
         type: 'text',
         value: this.props.phone ?? '',
@@ -108,7 +108,7 @@ export class UserPage extends Block {
       }),
       Exit: new PageLink({
         attr: {
-          class: 'link__right_type_right link__secondary',
+          class: 'right-type-right secondary',
         },
         text: 'Выйти',
         events: {

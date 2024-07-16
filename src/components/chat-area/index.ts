@@ -46,7 +46,7 @@ export class ChatArea extends Block {
 
   handleOpenModalAddUser = (event: Event) => {
     if (event.target instanceof HTMLElement) {
-      if (event.target.classList.contains('modal__content')) {
+      if (event.target.classList.contains('content')) {
         return;
       }
       const element = document.querySelector(`.modal`);
@@ -58,7 +58,7 @@ export class ChatArea extends Block {
 
   handleOpenModalRemoveUser = (event: Event) => {
     if (event.target instanceof HTMLElement) {
-      if (event.target.classList.contains('modal__content')) {
+      if (event.target.classList.contains('content')) {
         return;
       }
       const element = document.querySelector(`.modal-remove`);

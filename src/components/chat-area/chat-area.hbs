@@ -1,15 +1,15 @@
 <div class='chat-area'>
   {{#if chat}}
     <div class='chat-header'>
-      <div class='chat-header__user'>
+      <div class='user'>
         {{#if chat.avatar}}
-          <img class='chat-header__user-avatar' src={{chat.avatar}} alt='' />
+          <img class='user-avatar' src={{chat.avatar}} alt='' />
         {{else}}
-          <img class='chat-header__user-avatar' src='' alt='' />
+          <img class='user-avatar' src='' alt='' />
         {{/if}}
-        <p class='chat-header__user-name'>{{chat.title}}</p>
+        <p class='user-name'>{{chat.title}}</p>
       </div>
-      <div class='chat-header__buttons'>
+      <div class='buttons'>
         {{{DeleteChat}}}
         {{{AddUserButton}}}
         {{{RemoveUser}}}
@@ -30,7 +30,7 @@
     {{/if}}
     {{{MessageInput}}}
   {{else}}
-    <p class='chat-area__attention'>Выберите чат чтобы отправить сообщение</p>
+    <p class='attention'>Выберите чат чтобы отправить сообщение</p>
   {{/if}}
 </div>
 {{{ModalNewUser}}}

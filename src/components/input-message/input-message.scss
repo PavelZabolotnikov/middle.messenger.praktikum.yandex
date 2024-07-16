@@ -9,7 +9,7 @@
   width: 80vw;
 }
 
-.message-container__input {
+.input {
   width: 90%;
   background-color: #efefef;
   color: #202020;
@@ -31,7 +31,7 @@
   }
 }
 
-.message-container__submit {
+.submit {
   margin: 0 20px 10px 0;
   transform: rotate(180deg);
   display: flex;

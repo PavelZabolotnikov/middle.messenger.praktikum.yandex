@@ -6,6 +6,6 @@ export default class ProfileInput extends Block {
     super('li', props);
   }
   render() {
-    return this.compile(UserInputBlock, this.props, `input__wrapper ${this.props.class}`);
+    return this.compile(UserInputBlock, this.props, `wrapper ${this.props.class}`);
   }
 }

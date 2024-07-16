@@ -35,7 +35,7 @@ export class ChatPage extends Block {
 
   handleOpenModal = (event: Event) => {
     if (event.target instanceof HTMLElement) {
-      if (event.target.classList.contains('modal__content')) {
+      if (event.target.classList.contains('content')) {
         return;
       }
       const element = document.querySelector(`.modal-create`);
@@ -49,7 +49,7 @@ export class ChatPage extends Block {
     this.children = {
       ProfileLink: new Link({
         attr: {
-          class: 'link__align-right link__sidebar',
+          class: 'link__align-right sidebar',
           href: Links.UserPage,
         },
         text: 'Профиль >',
