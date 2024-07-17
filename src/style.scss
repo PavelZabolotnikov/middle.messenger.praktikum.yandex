@@ -1,0 +1,29 @@
+@import './assets/constants.scss';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: $font-body;
+  background-color: $text-bgcolor;
+  color: $text-color;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button {
+  font-size: inherit;
+  line-height: inherit;
+}
