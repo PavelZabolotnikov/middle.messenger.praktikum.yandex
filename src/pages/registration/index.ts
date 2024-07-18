@@ -184,7 +184,7 @@ validateField(inputName: string, value: string) {
         },
       }),
       RegistrationButton: new ButtonBlock({
-        name: 'Зарегистрироваться',
+        text: 'Зарегистрироваться',
         class: 'button button-primary',
         events: {
           click: (e: Event) => {

@@ -72,12 +72,17 @@ export default class WebSockets extends EventBus {
     });
 
     socket.addEventListener('message', (message) => {
+      try {
       const data = JSON.parse(message.data);
       if (['pong', 'user connected'].includes(data?.type)) {
-        return;
+      return;
       }
       this.emit(WSEvents.message, data);
-    });
+      } catch (error) {
+      console.error('Error parsing JSON data:', error);
+      }
+      });
+
   }
 
   send(data: string | number | object) {

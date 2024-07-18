@@ -113,7 +113,7 @@ handleSubmit = async (e: Event) => {
             },
           }),
           LoginButton: new ButtonBlock({
-            name: 'Авторизоваться',
+            text: 'Авторизоваться',
             class: 'button button-primary',
             events: {
               click: (e: Event) => {
