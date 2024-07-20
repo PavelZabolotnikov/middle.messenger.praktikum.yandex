@@ -198,7 +198,7 @@ validateField(inputName: string, value: string) {
           href: Links.LoginPage,
         },
         text: 'Войти',
-        class: 'button_secondary',
+        class: 'button-secondary',
         url: 'chatPage',
       }),
     };

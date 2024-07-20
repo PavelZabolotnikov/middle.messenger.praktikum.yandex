@@ -96,7 +96,7 @@ export class UserPage extends Block {
       }),
       Exit: new PageLink({
         attr: {
-          class: 'link__right-type_right link__secondary',
+          class: 'link-right-type-right link-secondary',
         },
         text: 'Выйти',
         events: {

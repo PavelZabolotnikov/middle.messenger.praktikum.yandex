@@ -1,15 +1,15 @@
 <div class='chat-area'>
   {{#if chat}}
     <div class='chat-header'>
-      <div class='chat-header__user'>
+      <div class='chat-header-user'>
         {{#if chat.avatar}}
-          <img class='chat-header__user-avatar' src={{chat.avatar}} alt='' />
+          <img class='chat-header-user-avatar' src={{chat.avatar}} alt='' />
         {{else}}
-          <img class='chat-header__user-avatar' src='' alt='' />
+          <img class='chat-header-user-avatar' src='' alt='' />
         {{/if}}
-        <p class='chat-header__user-name'>{{chat.title}}</p>
+        <p class='chat-header-user-name'>{{chat.title}}</p>
       </div>
-      <div class='chat-header__buttons'>
+      <div class='chat-header-buttons'>
         {{{DeleteChat}}}
         {{{AddUserButton}}}
         {{{RemoveUser}}}

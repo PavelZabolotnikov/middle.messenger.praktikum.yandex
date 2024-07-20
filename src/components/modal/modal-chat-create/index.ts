@@ -51,7 +51,7 @@ export default class Modal extends Block {
       }),
       Button: new ButtonBlock({
         text: 'Создать',
-        className: 'button button_primary button_primary_size_small',
+        className: 'button button-primary button-primary-size-small',
         events: {
           click: (event: MouseEvent) => this.handleSubmit(event),
         },

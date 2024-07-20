@@ -55,7 +55,7 @@ export default class ModalRemoveUser extends Block {
       }),
       Button: new ButtonBlock({
         text: 'Удалить',
-        className: 'button button_primary button_primary_size_small',
+        className: 'button button-primary button-primary-size-small',
         events: {
           click: (event: MouseEvent) => this.handleSubmit(event),
         },

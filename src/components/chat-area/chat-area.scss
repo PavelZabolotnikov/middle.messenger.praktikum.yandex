@@ -31,25 +31,25 @@
   z-index: 10;
 }
 
-.chat-header__user-name {
+.chat-header-user-name {
   margin: 0;
   font-size: 13px;
 }
 
-.chat-header__user {
+.chat-header-user {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.chat-header__user-avatar {
+.chat-header-user-avatar {
   border-radius: 50%;
   height: 34px;
   min-width: 34px;
   background-color: #efefef;
 }
 
-.chat-header__buttons {
+.chat-header-buttons {
   display: flex;
   gap: 20px;
 }
