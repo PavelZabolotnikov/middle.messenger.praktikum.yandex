@@ -1,13 +1,13 @@
 @import '../../assets/constants.scss';
 
-.avatar {
+.profile__avatar {
   border-radius: 50%;
   width: 130px;
   height: 130px;
   object-fit: cover;
 }
 
-.wrapper {
+.input__wrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@
   position: relative;
 }
 
-.bottom-border {
+.input-field__bottom-border {
   border-bottom: 1px solid #eaeaea;
   margin: 0 0 10px;
 }
@@ -33,7 +33,7 @@
   outline: none;
 }
 
-.title {
+.input__title {
   margin: 0 0 10px;
   color: #1e1e1e;
   font-size: 13px;
@@ -42,7 +42,7 @@
   width: inherit;
 }
 
-.input-error {
+.profile__input-error {
   display: block;
   font-size: 8px;
   color: #ff2f2f;

@@ -1,9 +1,9 @@
-import ButtonBlock from 'components/button';
+import ButtonBlock from '../../button';
 import ModalBlock from './modal.hbs?raw';
 import '../modal.scss';
 import Block from '../../../utils/Block';
 import ModalInput from './modal-input';
-import User from 'controllers/User';
+import User from '../../../controllers/User';
 
 interface Props {
   click(e: MouseEvent): unknown;

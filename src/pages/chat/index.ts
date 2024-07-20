@@ -49,7 +49,7 @@ export class ChatPage extends Block {
     this.children = {
       ProfileLink: new Link({
         attr: {
-          class: 'link__align-right sidebar',
+          class: 'link__align-right link__sidebar',
           href: Links.UserPage,
         },
         text: 'Профиль >',

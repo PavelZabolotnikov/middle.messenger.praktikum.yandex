@@ -8,6 +8,8 @@ import { Links } from '../../../main';
 import authController from '../../../controllers/Auth';
 import store, { StoreEvents } from '../../../store/store';
 import Auth from '../../../controllers/Auth';
+import Router from '../../../utils/router/Router';
+import ArrowButtonBlock from '../../../components/arrow-button';
 
 
 export class UserPage extends Block {
@@ -19,27 +21,13 @@ export class UserPage extends Block {
       this.setProps(store.getState().user);
     });
   }
-  handleOpenModal = (event: Event) => {
-    if (event.target instanceof HTMLElement) {
-      if (event.target.classList.contains('content')) {
-        return;
-      }
-      const element = document.querySelector(`.modal`);
-      if (element) {
-        element.classList.toggle('hidden');
-      }
-    }
-  };
+
 
   render() {
     this.children = {
-        UserProfileAvatarPhoto: new ProfileAvatar({
-        alt: 'Моё фото',
+      ProfileAvatar: new ProfileAvatar({
+        alt: 'Мой аватар',
         src: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}` : '',
-        id: this.props.id,
-        events: {
-          mousedown: (e: Event) => this.handleOpenModal(e),
-        },
       }),
       UserTitle: new ProfileUserTitleBlock({
         username: this.props.first_name ?? '',
@@ -108,13 +96,20 @@ export class UserPage extends Block {
       }),
       Exit: new PageLink({
         attr: {
-          class: 'right-type-right secondary',
+          class: 'link__right-type_right link__secondary',
         },
         text: 'Выйти',
         events: {
           click: () => {
             localStorage.clear(), authController.logout();
           },
+        },
+      }),
+
+      ArrowButton: new ArrowButtonBlock({
+        content: '',
+        events: {
+          click: () => Router.back(),
         },
       }),
     };

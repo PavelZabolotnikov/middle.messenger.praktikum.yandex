@@ -1,3 +1,4 @@
+import '../user-page.scss';
 import Block from '../../../utils/Block';
 import ChangeUserInfoBlock from './user-info-change.hbs?raw';
 import ProfileAvatar from '../../../components/profile/profile-avatar';
@@ -10,6 +11,8 @@ import store, { StoreEvents } from '../../../store/store';
 import User from '../../../controllers/User';
 import { ProfileData } from '../../../utils/types/profile';
 import Router from '../../../utils/router/Router';
+import ArrowButtonBlock from '../../../components/arrow-button';
+import Modal from '../../../components/modal/modal-avatar';
 
 export enum InputError {
     'email' = 'Введите корректный email',
@@ -76,6 +79,18 @@ export class UserInfoChangePage extends Block {
     return isValid;
   }
 
+  handleOpenModal = (event: Event) => {
+    if (event.target instanceof HTMLElement) {
+      if (event.target.classList.contains('content')) {
+        return;
+      }
+      const element = document.querySelector(`.modal`);
+      if (element) {
+        element.classList.toggle('hidden');
+      }
+    }
+  };
+
   handleSubmit = (e: Event) => {
     e.preventDefault();
     if (e.target) {
@@ -102,8 +117,12 @@ export class UserInfoChangePage extends Block {
   render() {
     this.children = {
       ProfileAvatar: new ProfileAvatar({
-        alt: 'Моё фото',
+        alt: 'Мой аватар',
         src: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}` : '',
+        id: this.props.id,
+        events: {
+          mousedown: (e: Event) => this.handleOpenModal(e),
+        },
       }),
       ProfileUserTitleBlock: new ProfileUserTitleBlock({
         username: this.props.first_name ?? '',
@@ -174,13 +193,24 @@ export class UserInfoChangePage extends Block {
           focusout: (event: Event) => this.handleValidate(event),
         },
       }),
+      Modal: new Modal({
+        events: {
+          click: (e: Event) => this.handleOpenModal(e),
+        },
+      }),
       SaveButton: new ButtonBlock({
-        name: 'Сохранить',
-        class: 'button button-primary button-primary-size-small',
+        text: 'Сохранить',
+        class: 'button button_primary button_primary_size_small',
         events: {
           click: (e: Event) => {
             this.handleSubmit(e);
           },
+        },
+      }),
+      ArrowButton: new ArrowButtonBlock({
+        content: '',
+        events: {
+          click: () => Router.back(),
         },
       }),
     };

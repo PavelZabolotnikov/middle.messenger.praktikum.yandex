@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.attention {
+.chat-area__attention {
   text-align: center;
   font-size: 12px;
   color: #999;
@@ -31,25 +31,25 @@
   z-index: 10;
 }
 
-.user-name {
+.chat-header__user-name {
   margin: 0;
   font-size: 13px;
 }
 
-.user {
+.chat-header__user {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.user-avatar {
+.chat-header__user-avatar {
   border-radius: 50%;
   height: 34px;
   min-width: 34px;
   background-color: #efefef;
 }
 
-.buttons {
+.chat-header__buttons {
   display: flex;
   gap: 20px;
 }

@@ -185,7 +185,7 @@ validateField(inputName: string, value: string) {
       }),
       RegistrationButton: new ButtonBlock({
         text: 'Зарегистрироваться',
-        class: 'button button-primary',
+        class: 'button button_primary',
         events: {
           click: (e: Event) => {
             this.handleSubmit(e);
@@ -198,7 +198,7 @@ validateField(inputName: string, value: string) {
           href: Links.LoginPage,
         },
         text: 'Войти',
-        class: 'button-secondary',
+        class: 'button_secondary',
         url: 'chatPage',
       }),
     };

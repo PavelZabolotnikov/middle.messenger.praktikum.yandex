@@ -1,3 +1,4 @@
+import '../user-page.scss';
 import Block from '../../../utils/Block';
 import UserPasswordChangeBlock from './user-password-change.hbs?raw';
 import ProfileAvatar from '../../../components/profile/profile-avatar';
@@ -7,6 +8,7 @@ import { validation } from '../../../utils/validation';
 import { Password } from '../../../utils/types/profile';
 import Router from '../../../utils/router/Router';
 import User from '../../../controllers/User';
+import ArrowButtonBlock from '../../../components/arrow-button';
 
 enum Blocks {
   'oldPassword' = 'OldPassword',
@@ -114,8 +116,19 @@ export class UserPasswordChangePage extends Block {
         },
       }),
       SaveButton: new ButtonBlock({
-        name: 'Сохранить',
-        class: 'button button-primary button-primary-size-small',
+        text: 'Сохранить',
+        class: 'button button_primary button_primary_size_small',
+        events: {
+          click: (e: Event) => {
+            this.handleSubmit(e);
+          },
+        },
+      }),
+      ArrowButton: new ArrowButtonBlock({
+        content: '',
+        events: {
+          click: () => Router.back(),
+        },
       }),
     };
 
