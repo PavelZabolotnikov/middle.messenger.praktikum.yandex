@@ -63,6 +63,8 @@
   max-height: 82vh;
   gap: 20px;
   width: 60%;
+  right: -245px;
+  margin-bottom: 350px;
 }
 
 .messages::-webkit-scrollbar {
@@ -75,4 +77,5 @@
   text-align: right;
   background-color: #cecece;
   border-radius: 20px;
+
 }
