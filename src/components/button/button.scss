@@ -1,4 +1,4 @@
-@import '../../assets/constants.scss';
+@import '../../assets/constants';
 
 .button {
   height: 40px;
@@ -13,12 +13,12 @@
   &.error {
     &::after {
       position: absolute;
-      left: 50%;
-      top: 70px;
       font-size: 9px;
       color: #f00;
-      transform: translateX(-50%);
       content: 'Ошибка';
+      left: 50%;
+      top: 70px;
+      transform: translateX(-50%);
     }
   }
 }

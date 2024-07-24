@@ -1,10 +1,14 @@
+import '../user-page.scss';
 import Block from '../../../utils/Block';
 import UserPasswordChangeBlock from './user-password-change.hbs?raw';
-import UserPhoto from '../../../components/user-photo';
-import ProfileInput from '../../../components/user-input';
+import ProfileAvatar from '../../../components/profile/profile-avatar';
+import ProfileInput from '../../../components/profile/profile-input';
 import ButtonBlock from '../../../components/button';
 import { validation } from '../../../utils/validation';
-import { user } from '../../../data/chatData';
+import { Password } from '../../../utils/types/profile';
+import Router from '../../../utils/router/Router';
+import User from '../../../controllers/User';
+import ArrowButtonBlock from '../../../components/arrow-button';
 
 enum Blocks {
   'oldPassword' = 'OldPassword',
@@ -48,24 +52,55 @@ export class UserPasswordChangePage extends Block {
       this.state[name] = value;
     }
   };
+
+  validateAllFields(): boolean {
+    let isValid: boolean = true;
+    const inputElements: NodeListOf<HTMLInputElement> = document.querySelectorAll('.input');
+    inputElements.forEach((inputElement: HTMLInputElement) => {
+      const { name, value } = inputElement;
+      if (!this.validateField(name, value)) {
+        isValid = false;
+      }
+    });
+    return isValid;
+  }
+  handleSubmit = (e: Event) => {
+    e.preventDefault();
+    if (e.target) {
+      if (this.validateAllFields()) {
+        const data: Password = {
+          newPassword: (this.state.newPassword as string) ?? '',
+          oldPassword: (this.state.oldPassword as string) ?? '',
+        };
+        User.changePassword(data);
+        Router.go('/settings');
+        console.log('Успешно изменен пароль \n', this.state);
+        (e.target as HTMLButtonElement).classList.remove('error');
+      } else {
+        console.log('Ошибка \n', this.state);
+        (e.target as HTMLButtonElement).classList.add('error');
+      }
+    }
+  };
+
   render() {
     this.children = {
-        UserPhoto: new UserPhoto({
+      ProfileAvatar: new ProfileAvatar({
         alt: 'Мой аватар',
-        src: user.photo,
+        src: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}` : '',
       }),
       OldPasswordInput: new ProfileInput({
         name: 'oldPassword',
         type: 'password',
         inputName: 'Старый пароль',
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         placeholder: '*********',
       }),
       NewPasswordInput: new ProfileInput({
         name: 'newPassword',
         type: 'password',
         inputName: 'Новый пароль',
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         placeholder: '*********',
         events: {
           focusout: (event: Event) => this.handleValidate(event),
@@ -81,8 +116,19 @@ export class UserPasswordChangePage extends Block {
         },
       }),
       SaveButton: new ButtonBlock({
-        name: 'Сохранить',
+        text: 'Сохранить',
         class: 'button button-primary button-primary-size-small',
+        events: {
+          click: (e: Event) => {
+            this.handleSubmit(e);
+          },
+        },
+      }),
+      ArrowButton: new ArrowButtonBlock({
+        content: '',
+        events: {
+          click: () => Router.back(),
+        },
       }),
     };
 

@@ -1,11 +1,18 @@
+import '../user-page.scss';
 import Block from '../../../utils/Block';
 import ChangeUserInfoBlock from './user-info-change.hbs?raw';
-import UserPhoto from '../../../components/user-photo';
-import UserFirstName from '../../../components/user-name';
-import ProfileInput from '../../../components/user-input';
+import ProfileAvatar from '../../../components/profile/profile-avatar';
+import ProfileUserTitleBlock from '../../../components/profile/profile-title';
+import ProfileInput from '../../../components/profile/profile-input';
 import ButtonBlock from '../../../components/button';
-import { user } from '../../../data/chatData';
 import { validation } from '../../../utils/validation';
+import Auth from '../../../controllers/Auth';
+import store, { StoreEvents } from '../../../store/store';
+import User from '../../../controllers/User';
+import { ProfileData } from '../../../utils/types/profile';
+import Router from '../../../utils/router/Router';
+import ArrowButtonBlock from '../../../components/arrow-button';
+import Modal from '../../../components/modal/modal-avatar';
 
 export enum InputError {
     'email' = 'Введите корректный email',
@@ -26,6 +33,18 @@ enum Blocks {
 export class UserInfoChangePage extends Block {
   constructor(props: { name?: string }) {
     super('div', { ...props });
+    Auth.getUserData();
+    store.on(StoreEvents.Updated, () => {
+      this.setProps(store.getState().user);
+    });
+    this.state = {
+      email: '',
+      login: '',
+      first_name: '',
+      second_name: '',
+      phone: '',
+      display_name: '',
+    };
   }
 
   validateField(inputName: string, value: string) {
@@ -60,10 +79,33 @@ export class UserInfoChangePage extends Block {
     return isValid;
   }
 
+  handleOpenModal = (event: Event) => {
+    if (event.target instanceof HTMLElement) {
+      if (event.target.classList.contains('content')) {
+        return;
+      }
+      const element = document.querySelector(`.modal`);
+      if (element) {
+        element.classList.toggle('hidden');
+      }
+    }
+  };
+
   handleSubmit = (e: Event) => {
     e.preventDefault();
     if (e.target) {
       if (this.validateAllFields()) {
+        const data: ProfileData = {
+          login: (this.state.login as string) ?? '',
+          password: (this.state.password as string) ?? '',
+          email: (this.state.email as string) ?? '',
+          first_name: (this.state.first_name as string) ?? '',
+          second_name: (this.state.second_name as string) ?? '',
+          phone: (this.state.phone as string) ?? '',
+          display_name: (this.state.display_name as string) ?? '',
+        };
+        User.putUserData(data);
+        Router.go('/settings');
         console.log('Успешно изменен профиль \n', this.state);
         (e.target as HTMLButtonElement).classList.remove('error');
       } else {
@@ -74,18 +116,22 @@ export class UserInfoChangePage extends Block {
   };
   render() {
     this.children = {
-        UserPhoto: new UserPhoto({
-        alt: 'Моё фото',
-        src: user.photo,
+      ProfileAvatar: new ProfileAvatar({
+        alt: 'Мой аватар',
+        src: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}` : '',
+        id: this.props.id,
+        events: {
+          mousedown: (e: Event) => this.handleOpenModal(e),
+        },
       }),
-      UserFirstName: new UserFirstName({
-        username: user.first_name,
+      ProfileUserTitleBlock: new ProfileUserTitleBlock({
+        username: this.props.first_name ?? '',
       }),
       UserEmailInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'email',
         type: 'text',
-        value: user.email,
+        value: this.props.email ?? '',
         disabled: false,
         inputName: 'Почта',
         events: {
@@ -93,10 +139,10 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserLoginInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'login',
         type: 'text',
-        value: user.login,
+        value: this.props.login ?? '',
         disabled: false,
         inputName: 'Логин',
         events: {
@@ -104,10 +150,10 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserFirstNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'first_name',
         type: 'text',
-        value: user.first_name,
+        value: this.props.first_name ?? '',
         disabled: false,
         inputName: 'Имя',
         events: {
@@ -115,10 +161,10 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserSecondNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'second_name',
         type: 'text',
-        value: user.second_name,
+        value: this.props.second_name ?? '',
         disabled: false,
         inputName: 'Фамилия',
         events: {
@@ -126,10 +172,10 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserDisplayNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'display_name',
         type: 'text',
-        value: user.display_name,
+        value: this.props.display_name ?? '',
         disabled: false,
         inputName: 'Имя в чате',
         events: {
@@ -137,23 +183,34 @@ export class UserInfoChangePage extends Block {
         },
       }),
       UserPhoneInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'phone',
         type: 'text',
-        value: user.phone,
+        value: this.props.phone ?? '',
         disabled: false,
         inputName: 'Телефон',
         events: {
           focusout: (event: Event) => this.handleValidate(event),
         },
       }),
+      Modal: new Modal({
+        events: {
+          click: (e: Event) => this.handleOpenModal(e),
+        },
+      }),
       SaveButton: new ButtonBlock({
-        name: 'Сохранить',
+        text: 'Сохранить',
         class: 'button button-primary button-primary-size-small',
         events: {
           click: (e: Event) => {
             this.handleSubmit(e);
           },
+        },
+      }),
+      ArrowButton: new ArrowButtonBlock({
+        content: '',
+        events: {
+          click: () => Router.back(),
         },
       }),
     };

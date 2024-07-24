@@ -1,0 +1,53 @@
+@import '../../assets/constants.scss';
+
+.profile-avatar {
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+}
+
+.input-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: none;
+  position: relative;
+}
+
+.input-field-bottom-border {
+  border-bottom: 1px solid #eaeaea;
+  margin: 0 0 10px;
+}
+
+.input {
+  height: 100%;
+  border: none;
+  background-color: #fff;
+  text-align: right;
+  margin: auto 0 10px;
+  color: #999;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0 5px;
+  outline: none;
+}
+
+.input-title {
+  margin: 0 0 10px;
+  color: #1e1e1e;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0 0 0 5px;
+  width: inherit;
+}
+
+.profile-input-error {
+  display: block;
+  font-size: 8px;
+  color: #ff2f2f;
+  height: 13px;
+  position: absolute;
+  top: 40px;
+  right: 0;
+}

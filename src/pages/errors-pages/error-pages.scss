@@ -1,0 +1,21 @@
+@import '../../assets/constants.scss';
+
+.page {
+  margin: 70px auto;
+  width: 300px;
+  text-align: center;
+  color: $title-color;
+}
+
+.title {
+  font: $font-large;
+}
+
+.subtitle {
+  font: $font-regular;
+  padding-bottom: 50px;
+}
+
+.list-element {
+  list-style: none;
+}

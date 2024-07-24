@@ -1,16 +1,13 @@
-<section class='user-page'>
-
-  <div class='sidebar'>
-    <div class='back-button'></div>
+<div class='profile'>
+  <div class='profile-return'>
+    {{{ArrowButton}}}
   </div>
-  <div class='main'>
-    <div class='user-info'>
-      <div class='user-photo'>
-        {{{UserPhoto}}}
-        <div class='firs-name'>Александр</div>
+<section class='content'>
+    <div class='avatar avatar__edit'>
+        {{{ProfileAvatar}}}
       </div>
-      {{{UserFirstName}}}
-      <ul class='inputs-list'>
+      {{{UserTitle}}}
+      <ul class='list'>
         {{{UserEmailInput}}}
         {{{UserLoginInput}}}
         {{{UserFirstNameInput}}}
@@ -18,12 +15,10 @@
         {{{UserDisplayNameInput}}}
         {{{UserPhoneInput}}}
       </ul>
-      <div class='change-info'>
+      <div class='buttons__links'>
         {{{UserInfoChange}}}
         {{{UserPasswordChange}}}
         {{{Exit}}}
-      </div>
-    </div>
-
   </div>
 </section>
+</div>

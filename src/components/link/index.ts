@@ -1,7 +1,8 @@
 import Block from '../../utils/Block';
+import './link.scss';
 import Link from './link.hbs?raw';
 
-class PageLink extends Block {
+export default class LinkBlock extends Block {
   constructor(props: Record<string, unknown>) {
     super('a', props);
   }
@@ -10,5 +11,3 @@ class PageLink extends Block {
     return this.compile(Link, this.props);
   }
 }
-
-export default PageLink

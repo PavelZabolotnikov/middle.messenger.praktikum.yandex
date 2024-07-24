@@ -1,11 +1,16 @@
 import MessageSearchInput from './message-search-input.hbs?raw';
 import Block from '../../utils/Block';
+import './message-search-input.scss';
+import ArrowButtonBlock from '../arrow-button';
 
-export default class MessageSearchInputBlock extends Block {
+export default class MessageBlock extends Block {
   constructor(props: Record<string, unknown>) {
-    super('div', props);
+    super('form', props);
   }
   render() {
-    return this.compile(MessageSearchInput, this.props, this.props.class);
+    this.children = {
+      ArrowButton: new ArrowButtonBlock({ content: '' }),
+    };
+    return this.compile(MessageSearchInput, this.props, 'message-container');
   }
 }

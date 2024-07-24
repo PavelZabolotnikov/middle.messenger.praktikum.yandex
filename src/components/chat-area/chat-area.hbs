@@ -1,0 +1,37 @@
+<div class='chat-area'>
+  {{#if chat}}
+    <div class='chat-header'>
+      <div class='chat-header-user'>
+        {{#if chat.avatar}}
+          <img class='chat-header-user-avatar' src={{chat.avatar}} alt='' />
+        {{else}}
+          <img class='chat-header-user-avatar' src='' alt='' />
+        {{/if}}
+        <p class='chat-header-user-name'>{{chat.title}}</p>
+      </div>
+      <div class='chat-header-buttons'>
+        {{{DeleteChat}}}
+        {{{AddUserButton}}}
+        {{{RemoveUser}}}
+      </div>
+    </div>
+    {{#if messages}}
+      <div class='messages' id='messages'>
+        {{#each messages}}
+          <div class='message'>
+            <p class='message__author'>автор: {{user_id}}</p>
+            <p class='message__text'>{{content}}</p>
+            <p class='message__date'>{{time}}</p>
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      Сообщений еще нет
+    {{/if}}
+    {{{MessageInput}}}
+  {{else}}
+    <p class='chat-area-attention'>Выберите чат чтобы отправить сообщение</p>
+  {{/if}}
+</div>
+{{{ModalNewUser}}}
+{{{ModalRemoveUser}}}

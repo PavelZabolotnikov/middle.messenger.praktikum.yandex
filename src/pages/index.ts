@@ -1,4 +1,3 @@
-import { NavigationPage } from './navigation-page';
 import { LoginPage } from './login';
 import { RegistrationPage } from './registration';
 import { ChatPage } from './chat';
@@ -9,7 +8,6 @@ import { ClientErrorPage } from './errors-pages';
 import { ServerErrorPage } from './errors-pages';
 
 export { 
-    NavigationPage, 
     LoginPage, 
     RegistrationPage, 
     ChatPage, 

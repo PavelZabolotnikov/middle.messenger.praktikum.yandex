@@ -1,113 +1,116 @@
-import './user-profile.scss';
 import Block from '../../../utils/Block';
 import UserProfileBlock from './user-profile.hbs?raw';
 import PageLink from '../../../components/link';
-import UserPhoto from '../../../components/user-photo';
-import UserFirstName from '../../../components/user-name';
-import { user } from '../../../data/chatData';
-import ProfileInput from '../../../components/user-input';
-
+import ProfileAvatar from '../../../components/profile/profile-avatar';
+import ProfileUserTitleBlock from '../../../components/profile/profile-title';
+import ProfileInput from '../../../components/profile/profile-input';
+import { Links } from '../../../main';
+import authController from '../../../controllers/Auth';
+import store, { StoreEvents } from '../../../store/store';
+import Auth from '../../../controllers/Auth';
+import Router from '../../../utils/router/Router';
+import ArrowButtonBlock from '../../../components/arrow-button';
 
 
 export class UserPage extends Block {
   constructor(props: { name?: string }) {
     super('div', { ...props });
-
     this.props.isModalOpen = false;
+    Auth.getUserData();
+    store.on(StoreEvents.Updated, () => {
+      this.setProps(store.getState().user);
+    });
   }
-  handleOpenModal = (event: Event) => {
-    if (event.target instanceof HTMLElement) {
-      if (event.target.classList.contains('modal__content')) {
-        return;
-      }
-      const element = document.querySelector(`.modal`);
-      if (element) {
-        element.classList.toggle('hidden');
-      }
-    }
-  };
+
 
   render() {
     this.children = {
-        UserPhoto: new UserPhoto({
-        alt: 'Моё фото',
-        src: user.photo,
-        id: this.props.id,
-        events: {
-          mousedown: (e: Event) => this.handleOpenModal(e),
-        },
+      ProfileAvatar: new ProfileAvatar({
+        alt: 'Мой аватар',
+        src: this.props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}` : '',
       }),
-      UserFirstName: new UserFirstName({
-          username: user.first_name,
+      UserTitle: new ProfileUserTitleBlock({
+        username: this.props.first_name ?? '',
         }),
         UserEmailInput: new ProfileInput({
-          class: 'input-field__bottom-border',
+          class: 'bottom-border',
           name: 'email',
           type: 'text',
-          value: user.email,
+          value: this.props.email ?? '',
           disabled: true,
           inputName: 'Почта',
         }),
         UserLoginInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'login',
         type: 'text',
-        value: user.login,
+        value: this.props.login ?? '',
         disabled: true,
         inputName: 'Логин',
       }),
       UserFirstNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'first_name',
         type: 'text',
-        value: user.first_name,
+        value: this.props.first_name ?? '',
         disabled: true,
         inputName: 'Имя',
       }),
       UserSecondNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'second_name',
         type: 'text',
-        value: user.second_name,
+        value: this.props.second_name ?? '',
         disabled: true,
         inputName: 'Фамилия',
       }),
       UserDisplayNameInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'display_name',
         type: 'text',
-        value: user.display_name,
+        value: this.props.display_name ?? '',
         disabled: true,
         inputName: 'Имя в чате',
       }),
       UserPhoneInput: new ProfileInput({
-        class: 'input-field__bottom-border',
+        class: 'bottom-border',
         name: 'phone',
         type: 'text',
-        value: user.phone,
+        value: this.props.phone ?? '',
         disabled: true,
         inputName: 'Телефон',
       }),
       UserInfoChange: new PageLink({
         attr: {
           class: 'link',
-          href: 'userInfoChangePage',
+          href: Links.UserInfoChangePage,
         },
         text: 'Изменить данные',
       }),
       UserPasswordChange: new PageLink({
         attr: {
           class: 'link',
-          href: 'userPasswordChangePage',
+          href: Links.UserPasswordChangePage,
         },
         text: 'Изменить пароль',
       }),
       Exit: new PageLink({
         attr: {
-          class: 'link__right_type_right link__secondary',
-          href: 'login',
+          class: 'link-right-type-right link-secondary',
         },
         text: 'Выйти',
+        events: {
+          click: () => {
+            localStorage.clear(), authController.logout();
+          },
+        },
+      }),
+
+      ArrowButton: new ArrowButtonBlock({
+        content: '',
+        events: {
+          click: () => Router.back(),
+        },
       }),
     };
 
