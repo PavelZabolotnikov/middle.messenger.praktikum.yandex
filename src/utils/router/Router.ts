@@ -1,4 +1,4 @@
-import Block from '../Block';
+import Block from '../block/Block';
 import Route from './Route';
 class Router {
   static __instance: Router;

@@ -1,5 +1,5 @@
 import '../user-page.scss';
-import Block from '../../../utils/Block';
+import Block from '../../../utils/block/Block';
 import UserPasswordChangeBlock from './user-password-change.hbs?raw';
 import ProfileAvatar from '../../../components/profile/profile-avatar';
 import ProfileInput from '../../../components/profile/profile-input';

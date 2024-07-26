@@ -1,4 +1,4 @@
-import Block from '../../../utils/Block';
+import Block from '../../../utils/block/Block';
 import UserProfileBlock from './user-profile.hbs?raw';
 import PageLink from '../../../components/link';
 import ProfileAvatar from '../../../components/profile/profile-avatar';

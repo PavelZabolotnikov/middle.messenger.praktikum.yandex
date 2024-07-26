@@ -1,5 +1,5 @@
 import MessageSearchInput from './message-search-input.hbs?raw';
-import Block from '../../utils/Block';
+import Block from '../../utils/block/Block';
 import './message-search-input.scss';
 import ArrowButtonBlock from '../arrow-button';
 

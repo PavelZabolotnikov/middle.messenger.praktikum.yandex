@@ -1,6 +1,6 @@
 import './menu-button.scss';
 import MenuButtonBlock from './menu-button.hbs?raw';
-import Block from '../../utils/Block';
+import Block from '../../utils/block/Block';
 
 export default class MenuButton extends Block {
   constructor(props: Record<string, unknown>) {

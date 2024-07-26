@@ -1,5 +1,5 @@
 import ProfileAvatarBlock from './avatar.hbs?raw';
-import Block from '../../../utils/Block';
+import Block from '../../../utils/block/Block';
 import '../profile.scss';
 
 export default class ProfileAvatar extends Block {

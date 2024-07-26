@@ -1,6 +1,6 @@
 import './arrow-button.scss';
 import ArrowButton from './arrow-button.hbs?raw';
-import Block from '../../utils/Block';
+import Block from '../../utils/block/Block';
 
 export default class ArrowButtonBlock extends Block {
   constructor(props: Record<string, unknown>) {

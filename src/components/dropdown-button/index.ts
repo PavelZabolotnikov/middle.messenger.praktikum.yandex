@@ -1,6 +1,6 @@
 import './dropdown-button.scss';
 import Button from './dropdown-button.hbs?raw';
-import Block from '../../utils/Block';
+import Block from '../../utils/block/Block';
 
 export default class DropdownButtonBlock extends Block {
   constructor(props: Record<string, unknown>) {

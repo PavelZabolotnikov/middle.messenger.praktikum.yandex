@@ -1,6 +1,6 @@
 import ServerErrorPageBlock from './500-error-page.hbs?raw';
 import PageLink from '../../../components/link';
-import Block from '../../../utils/Block';
+import Block from '../../../utils/block/Block';
 import Router from '../../../utils/router/Router';
 import '../error-pages.scss';
 
