@@ -1,4 +1,4 @@
-import EventBus from '../utils/EventBus';
+import EventBus from '../../utils/EventBus';
 import Handlebars from 'handlebars';
 
 type Props = { events?: Record<string, EventListener>; attr?: Record<string, string>; [key: string | symbol]: unknown };

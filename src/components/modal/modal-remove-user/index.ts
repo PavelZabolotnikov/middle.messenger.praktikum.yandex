@@ -1,7 +1,7 @@
 import ButtonBlock from '../../button';
 import ModalBlock from './modal.hbs?raw';
 import '../modal.scss';
-import Block from '../../../utils/Block';
+import Block from '../../../utils/block/Block';
 import ModalInput from './modal-input';
 import Chat from '../../../controllers/Chat';
 interface Chat {

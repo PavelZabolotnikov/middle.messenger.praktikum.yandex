@@ -1,6 +1,6 @@
 import './login.scss';
 import LoginBlock from './login.hbs?raw'
-import Block from "../../utils/Block";
+import Block from "../../utils/block/Block";
 import PagesTitle from "../../components/page-title/index";
 import PageLinkBlock from '../../components/link';
 import  ButtonBlock  from "../../components/button";

@@ -1,5 +1,5 @@
 import ProfileUserTitle from './profile-user.hbs?raw';
-import Block from '../../../utils/Block';
+import Block from '../../../utils/block/Block';
 import '../profile.scss';
 export default class ProfileUserTitleBlock extends Block {
   constructor(props: Record<string, unknown>) {

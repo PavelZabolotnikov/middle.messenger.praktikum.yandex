@@ -1,5 +1,5 @@
 import './registration.scss';
-import Block from "../../utils/Block";
+import Block from "../../utils/block/Block";
 import PagesTitle from "../../components/page-title/index";
 import InputBlock  from "../../components/input";
 import  ButtonBlock  from "../../components/button";

@@ -1,6 +1,6 @@
 import './conversation-list.scss';
 import ChatListBlock from './conversation-list.hbs?raw';
-import Block from '../../utils/Block';
+import Block from '../../utils/block/Block';
 import { ChatCard } from './chat-card';
 import store from '../../store/store';
 import WebSocket from '../../controllers/WebSocket';

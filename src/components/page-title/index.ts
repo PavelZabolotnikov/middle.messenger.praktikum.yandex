@@ -1,5 +1,5 @@
 import './page-title.scss';
-import Block from '../../utils/Block';
+import Block from '../../utils/block/Block';
 import PageTitle from './page-title.hbs?raw';
 
 

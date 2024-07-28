@@ -5,10 +5,15 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "vite --port 3000 --host",
+    "dev": "vite --port 3000 --host --open",
     "start": "rm -rf dist && tsc && vite build && node ./src/server.js",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "mocha --es-module-specifier-resolution=node",
+    "husky:precommit": "npm-run-all lint:styles test lint",
+    "prepare": "husky install",
+    "lint": "eslint \"src/**/*.{ts,js,js}\" --fix",
+    "lint:styles": "stylelint  \"src/**/*.scss\""
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +25,18 @@
     "stylelint-config-standard": "^36.0.0",
     "typescript": "^5.4.5",
     "vite": "^4.4.5",
-    "vite-plugin-handlebars": "^2.0.0"
+    "vite-plugin-handlebars": "^2.0.0",
+    "husky": "^8.0.3",
+    "mocha": "^10.4.0",
+    "chai": "^5.1.0",
+    "jsdom": "^24.0.0",
+    "@types/chai": "^4.3.14",
+    "@types/jsdom": "^21.1.6",
+    "@types/mocha": "^10.0.6",
+    "sinon": "^17.0.1",
+    "@types/sinon": "^17.0.3",
+    "ts-node": "^10.9.2",
+    "npm-run-all": "^4.1.5"
   },
   "dependencies": {
     "express": "^4.18.3",

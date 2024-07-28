@@ -1,6 +1,6 @@
 import './chat-card.scss';
 import ChatListBlock from './chat-card.hbs?raw';
-import Block from '../../../utils/Block';
+import Block from '../../../utils/block/Block';
 
 export class ChatCard extends Block {
   constructor(props: Record<string, unknown>) {

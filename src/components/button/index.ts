@@ -1,5 +1,5 @@
 import './button.scss';
-import Block from '../../utils/Block';
+import Block from '../../utils/block/Block';
 import Button from './button.hbs?raw';
 
 export default class ButtonBlock extends Block {

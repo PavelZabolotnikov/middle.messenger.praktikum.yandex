@@ -1,4 +1,4 @@
-import Block from '../Block';
+import Block from '../block/Block';
 import { renderDOM } from '../renderDOM/RenderDOM';
 
 function isEqual(lhs: string, rhs: string) {

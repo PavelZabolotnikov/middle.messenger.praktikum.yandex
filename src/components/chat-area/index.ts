@@ -1,6 +1,6 @@
 import './chat-area.scss';
 import ChatAreaBlock from './chat-area.hbs?raw';
-import Block from '../../utils/Block';
+import Block from '../../utils/block/Block';
 import MessageBlock from '../input-message';
 import MenuButton from '../menu-button';
 import ModalAddUser from '../modal/modal-add-user';

@@ -1,6 +1,6 @@
 import './chat.scss'
 import ChatPageBlock from './chat-page.hbs?raw';
-import Block from '../../utils/Block';
+import Block from '../../utils/block/Block';
 import Link from '../../components/link';
 import SearchInputBlock from '../../components/search-input';
 import ChatList from '../../components/conversation-list';

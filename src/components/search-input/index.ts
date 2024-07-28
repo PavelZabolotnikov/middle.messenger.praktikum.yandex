@@ -1,6 +1,6 @@
 import './search-input.scss';
 import SearchInput from './search-input.hbs?raw';
-import Block from '../../utils/Block';
+import Block from '../../utils/block/Block';
 
 export default class SearchInputBlock extends Block {
   constructor(props: Record<string, unknown>) {
